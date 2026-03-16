@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题笔记 - 暗色科技风</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap');
+
+        :root {
+            --bg-main: #09090b;
+            --bg-card: #18181b;
+            --accent: #3b82f6;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --border: #27272a;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* 隐藏滚动条但保留功能 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+        .sidebar {
+            border-right: 1px solid var(--border);
+            scrollbar-gutter: stable;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: border-color 0.3s ease;
+        }
+
+        .content-card:hover {
+            border-color: var(--accent);
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #27272a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #fbbf24;
+        }
+
+        .highlight {
+            background-color: rgb(166, 255, 0);
+            color: black;
+        }
+
+        pre {
+            background: #000 !important;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #e4e4e7;
+        }
+
+        .toc-link {
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .anchor-offset {
+            scroll-margin-top: 100px;
+        }
+
+        img {
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 1.5rem 0;
+            max-width: 100%;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: #27272a;
+            color: var(--accent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 w-full z-50 bg-[#09090b]/80 backdrop-blur-md border-b border-[#27272a]">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <i data-lucide="terminal" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight">Interview<span class="text-blue-500">Docs</span></span>
+            </div>
+            <div class="text-sm text-zinc-500 flex items-center gap-4">
+                <span>Updated: 2026.03.11</span>
+                <a href="#" class="hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-[1440px] mx-auto flex pt-16">
+
+        <main class="flex-1 lg:ml-72 p-6 lg:p-12">
+            <div class="max-w-3xl mx-auto space-y-16" id="main-content">
+                
+                <section>
+                    <h2 id="java-basics" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                        java基础
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div id="q1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q1</span> 1.==和equals的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm">
+                                对于 Object 来说，equals 是用 == 实现的，所以二者是相同的，都是用来比较两个对象的引用是否相同的，但 Java 中的其他类，都会重写 equals 让其变为值比较，而非引用比较，如 Integer 和 String 都是这样。
+                            </div>
+                        </div>
+
+                        <div id="q2" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q2</span> 2.方法的重写和重载的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">重载：在同一类中</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>方法名必须相同</li>
+                                    <li>参数类型不同</li>
+                                    <li>参数数量不同</li>
+                                    <li>参数顺序不同</li>
+                                    <li>方法返回值和访问修饰符可以不同</li>
+                                </ol>
+                                <p><strong class="text-zinc-200">重写：是子类对父类允许访问的方法进行重新编写</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>方法名必须相同</li>
+                                    <li>参数列表必须相同</li>
+                                    <li>子类返回值范围应比父类的更小或相等</li>
+                                    <li>访问修饰符范围应该大于或等于父类</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q3" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q3</span> 3.抽象类和接口的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">1.定义的关键字不同</strong>：抽象类为abstract，接口为interface</p>
+                                <p><strong class="text-zinc-200">2.方法</strong>：抽象类可以包含抽象方法和具体方法，接口只能包含方法的声明(抽象方法)</p>
+                                <p><strong class="text-zinc-200">3.方法的访问修饰符</strong>：抽象类无限制，只是里面的抽象方法不能用private</p>
+                                <p class="ml-5">接口有限制，默认的public方法</p>
+                                <p><strong class="text-zinc-200">4.实现</strong>：一个类只能继承一个抽象类但可以实现多个接口</p>
+                                <p><strong class="text-zinc-200">5.变量</strong>：抽象类可以包含实例变量和静态变量，接口只能包含常量</p>
+                                <p><strong class="text-zinc-200">6.构造函数</strong>：抽象类可以有构造函数，接口不能有构造函数</p>
+                            </div>
+                        </div>
+
+                        <div id="q4" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q4</span> 4.Integer的缓存机制
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>Integer会缓存-128到127的对象到常量池</p>
+                                <p>之后不论是new还是什么，Integer只要在这个范围内只要值相同，他们都是同一个对象</p>
+                                <p>比如：</p>
+                                <pre><code>Integer a=Integer.valueOf(127);
+Integer b=Integer.valueOf(127);
+a==b为true</code></pre>
+                                <p>Float和Double没有缓存机制</p>
+                            </div>
+                        </div>
+
+                        <div id="q5" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q5</span> 5.final，finally，finalize的区别？finally中的方法一定会执行吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">final：</strong></p>
+                                <p>是个<strong>修饰符</strong>，可以用于修饰类，方法和变量</p>
+                                <p>修饰类时，该类不能被继承，即为最终类</p>
+                                <p>修饰方法时，该方法不能被子类重写</p>
+                                <p>修饰变量时，表示该变量是一个常量，其值不能被修改</p>
+                                
+                                <p><strong class="text-zinc-200">finally：</strong></p>
+                                <p>是一个<strong>关键字</strong>，用于定义一个代码块，通常与try-catch结构一起使用</p>
+                                <p>finally块中的代码无论是否抛出异常，都会被执行</p>
+                                <p>finally块通常用于释放资源、关闭连接或执行必要的清理操作</p>
+                                
+                                <p><strong class="text-zinc-200">finalize：</strong></p>
+                                <p>finalize是Object类中的一个方法，被用于垃圾回收机制</p>
+                                <p>finalize方法在对象被垃圾回收之前被调用，用于进行资源释放或其他清理操作</p>
+                                <p>通常情况下，我们不需要显式地调用finalize方法，而是交由垃圾回收器自动调用</p>
+                                
+                                <p><strong class="text-zinc-200">finally中的方法一定会执行吗？</strong></p>
+                                <p>正常运行的情况下，finally 中的代码是一定会执行的，但是，如果遇到 System.exit() 方法或 Runtime.getRuntime().halt() 方法，或者是 try 中发生了死循环、死锁，遇到了掉电、JVM 崩溃等问题，finally 中的代码是不会执行的。而 exit() 方法会执行 JVM 关闭钩子方法或终结器，但 halt() 方法并不会执行钩子方法或终结器。</p>
+                                <p>finally 之前虚拟机被终止运行的话，finally 中的代码就不会被执行</p>
+                                <p>另外，在以下 2 种特殊情况下，<code>finally</code> 块的代码也不会被执行：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>程序所在的线程死亡。</li>
+                                    <li>关闭 CPU。</li>
+                                </ol>
+                                <p><strong class="text-zinc-200">不会执行的情况：</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>System.exit()</li>
+                                    <li>Runtime.getRuntime().halt()</li>
+                                    <li>try 中发生了死循环、死锁，遇到了掉电、JVM 崩溃等问题</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q6" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q6</span> 6.多态的原理？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">什么是多态？</strong></p>
+                                <p>多态是面向对象编程中的一个重要概念，它允许通过父类类型的引用变量来引用子类对象，并在运行时根据实际对象的类型来确定调用哪个方法。换句话说，一个对象可以根据不同的情况表现出多种形态。</p>
+                                <p>通过多态，我们可以利用父类类型的引用变量来指向子类对象，并根据实际对象的类型调用对应的方法。这样可以在不修改现有代码的情况下，动态地切换和扩展对象的行为。</p>
+                                
+                                <p><strong class="text-zinc-200">特点和优势：</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>可替换性</strong>：子类对象可以随时替代父类对象，向上转型。</li>
+                                    <li><strong>可扩展性</strong>：通过添加新的子类，可以扩展系统的功能。</li>
+                                    <li><strong>接口统一性</strong>：可以通过父类类型的引用访问子类对象的方法，统一对象的接口。</li>
+                                    <li><strong>代码的灵活性和可维护性</strong>：通过多态，可以将代码编写成通用的、松耦合的形式，提高代码的可维护性。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">实现原理：</strong></p>
+                                <p>多态的实现原理主要是依靠“动态绑定”和“虚拟方法调用”，它的实现流程如下：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>创建父类类型的引用变量，并将其赋值为子类对象。</li>
+                                    <li>在运行时，通过动态绑定确定引用变量所指向的实际对象的类型。</li>
+                                    <li>根据实际对象的类型，调用相应的方法版本。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">动态绑定：</strong></p>
+                                <p>动态绑定（Dynamic Binding）：指的是在编译时，Java 编译器只能知道变量的声明类型，而无法确定其实际的对象类型。而在运行时，Java 虚拟机（JVM）会通过动态绑定来解析实际对象的类型。这意味着，编译器会推迟方法的绑定（即方法的具体调用）到运行时。正是这种动态绑定机制，使得多态成为可能。</p>
+                                
+                                <p><strong class="text-zinc-200">虚拟方法调用：</strong></p>
+                                <p>虚拟方法调用（Virtual Method Invocation）：在 Java 中，所有的非私有、非静态和非 final 方法都是被隐式地指定为虚拟方法。虚拟方法调用是在运行时根据实际对象的类型来确定要调用的方法的机制。当通过父类类型的引用变量调用被子类重写的方法时，虚拟机会根据实际对象的类型来确定要调用的方法版本，而不是根据引用变量的声明类型。</p>
+                            </div>
+                        </div>
+
+                        <div id="q7" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q7</span> 7.抽象类和普通类的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">实例化</strong>：普通类可以直接实例化，而抽象类不能直接实例化。</p>
+                                <p><strong class="text-zinc-200">方法</strong>：抽象类中既包含抽象方法又可以包含具体的方法，而普通类只能包含普通方法。</p>
+                                <p><strong class="text-zinc-200">实现</strong>：普通类实现接口需要重写接口中的方法，而抽象类可以实现接口方法也可以不实现。</p>
+                            </div>
+                        </div>
+
+                        <div id="q8" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q8</span> 8.String，Stringbuffer，StringBuilder的区别
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">可变性：</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>String是<strong>不可变的类</strong>，一旦创建就不能被修改。每次对String进行操作时，都会创建一个新的String对象。</li>
+                                    <li>StringBuffer和StringBuilder是可变的类，可以动态修改字符串内容。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">线程安全性：</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>String是线程安全的，因为它是不可变的。多个线程可以同时访问同一个String对象而无需担心数据的修改问题。</li>
+                                    <li>StringBuffer是线程安全的，它的方法使用了synchronized关键字进行同步，保证在多线程环境下的安全性。</li>
+                                    <li>StringBuilder是非线程安全的，不使用synchronized关键字，所以在多线程环境下使用时需要手动进行同步控制。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">性能：</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>由于String是不可变的，每次对String进行操作都会创建一个新的String对象，频繁的字符串拼接会导致大量的对象创建和内存消耗。</li>
+                                    <li>StringBuffer是可变的，对字符串的修改是在原有对象上进行，不会创建新的对象，因此在频繁的字符串拼接场景下比String更高效。</li>
+                                    <li>StringBuilder与StringBuffer类似，但不保证线程安全性，因此在单线程环境下性能更高。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">总结：</strong></p>
+                                <p>综上，如果在单线程环境下进行字符串操作，且不需要频繁修改字符串，推荐使用String；如果在多线程环境下进行字符串操作，或者需要频繁修改字符串，优先考虑使用StringBuffer；如果在单线程环境下进行频繁的字符串拼接和修改，推荐使用StringBuilder以获取更好的性能。</p>
+                            </div>
+                        </div>
+
+                        <div id="q9" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q9</span> 9.字符型常量和字符串常量的区别?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">形式</strong> : 字符常量是单引号引起的一个字符，字符串常量是双引号引起的 0 个或若干个字符。</p>
+                                <p><strong class="text-zinc-200">含义</strong> : 字符常量相当于一个整型值( ASCII 值),可以参加表达式运算; 字符串常量代表一个地址值(该字符串在内存中存放位置)。</p>
+                                <p><strong class="text-zinc-200">占内存大小</strong>：字符常量只占 2 个字节; 字符串常量占若干个字节。</p>
+                            </div>
+                        </div>
+
+                        <div id="q10" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q10</span> 10.ArrayList
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>ArrayList内部基于<strong>动态数组</strong>（Object数组）实现，比 Array（静态数组） 使用起来更加灵活</p>
+                                <p>ArrayList只能存储对象。对于基本类型数据，需要使用其对应的包装类（如 Integer、Double 等）。</p>
+                                <p>ArrayList是有序的。</p>
+                                <p>ArrayList是线程不安全的，但是效率高。</p>
+                                <p>ArrayList如果使用无参构造器，初始容量是0，当第一次添加时，容量变为10，当需要扩容时1.5倍扩容。</p>
+                                <p>如果使用指定大小构造器，则初始容量为指定大小，需要扩容时直接1.5倍扩容。</p>
+                                
+                                <p><strong class="text-zinc-200">ArrayList与Vector区别？</strong></p>
+                                <p>答：Vector是线程安全的，ArrayList是线程不安全的。</p>
+                                <p>Vector无参构造器时默认是10容量，需要扩容时2倍扩容，指定容量有参构造的话直接为指定大小，2倍扩容</p>
+                            </div>
+                        </div>
+
+                        <div id="q11" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q11</span> 11.ArrayList和LinkedList有什么区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>底层数据结构</strong>：ArrayList使用==<strong>数组</strong>==来存储元素，而LinkedList使用==<strong>双向链表</strong>==来存储元素。</li>
+                                    <li><strong>随机访问性能</strong>：ArrayList支持高效的随机访问（根据索引获取元素），因为它可以通过下标计算元素在数组中的位置。而LinkedList在随机访问方面性能较差，获取元素需要从头或尾部开始遍历链表找到对应位置。</li>
+                                    <li><strong>插入和删除性能</strong>：ArrayList在尾部添加或删除元素的性能较好，因为它不涉及数组的移动。而在中间插入或删除元素时，ArrayList涉及到元素的移动，性能相对较低。LinkedList在任意位置进行插入和删除操作的性能较好，因为只需要调整链表中的指针即可。</li>
+                                    <li><strong>内存占用</strong>：ArrayList在每个元素都需要存储一个引用和一个额外的数组空间，因此内存占用比较高。而LinkedList由于需要存储前后节点的引用，相对于ArrayList占用的内存更多。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">时间复杂度：</strong></p>
+                                <p>ArrayList查询O(1) 插入和删除O(n)</p>
+                                <p>Linkedlist查询O(n) 插入和删除O(1)</p>
+                            </div>
+                        </div>
+
+                        <div id="q12" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q12</span> 12.HashMap
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>在 JDK 1.7 时，HashMap 底层是通过数组 + 链表实现的；</p>
+                                <p>而在 JDK 1.8 时，HashMap 底层是通过数组 + 链表或红黑树实现的。</p>
+                                
+                                <p><strong class="text-zinc-200">链表升级为红黑树：</strong></p>
+                                <p>在 JDK 1.8 之后，HashMap 默认是先使用数组 + 链表存储数据，但当满足以下两个条件时：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>==<strong>链表的数量大于阈值（默认是 8）</strong>==</li>
+                                    <li>==<strong>并且数组长度大于 64 时</strong>==</li>
+                                </ol>
+                                <p>为了（查询）的性能考虑会将链表升级为红黑树进行存储，具体执行流程如下：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>创建新的红黑树对象，并将链表内所有的键值对全部添加到红黑树中。</li>
+                                    <li>将原来的链表引用指向新创建的红黑树。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">红黑树退化为链表：</strong></p>
+                                <p>当进行了删除操作，导致==<strong>红黑树的节点小于等于 6 时，会发生退化</strong>==，将红黑树转换为链表。这是因为当节点数量较少时，红黑树对性能的提升并不明显，反而占用了更多的内存空间。具体执行流程如下：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>从红黑树的根节点开始，按照<strong>中序遍历</strong>的顺序将所有节点加入到一个新的链表中。</li>
+                                    <li>将原来的红黑树引用指向新创建的链表。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">扩容机制：</strong></p>
+                                <p>第一次添加时table数组扩容到16，当数组元素到达16*负载因子0.75=12(临界值)时便会对数组进行扩容</p>
+                                <p>扩容是==<strong>2倍扩容</strong>==</p>
+                                <p>hashset比较添加的元素是否重复是判断<strong>hash()</strong>相同且<strong>equals()</strong>相同</p>
+                                <p>对于hashmap中链表添加节点是使用***头插法***，这导致每次扩容后链表里的元素顺序会反转</p>
+                            </div>
+                        </div>
+
+                        <div id="q13" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q13</span> 13.为什么重写 equals() 时必须重写 hashCode() 方法？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>因为两个相等的对象的 <code>hashCode</code> 值必须是相等。也就是说如果 <code>equals</code> 方法判断两个对象是相等的，那这两个对象的 <code>hashCode</code> 值也要相等。</p>
+                                <p>如果重写 <code>equals()</code> 时没有重写 <code>hashCode()</code> 方法的话就可能会导致 <code>equals</code> 方法判断是相等的两个对象，<code>hashCode</code> 值却不相等。</p>
+                            </div>
+                        </div>
+
+                        <div id="q14" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q14</span> 14.HashSet和HashMap有什么区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>HashSet 实现了 Set 接口，只存储对象；HashMap 实现了 Map 接口，用于存储键值对。</p>
+                                <p>HashSet 底层是用 HashMap 存储的，HashSet 封装了一系列 HashMap 的方法，HashSet 将（自己的）值保存到 HashMap 的 Key 里面了。</p>
+                                <p>HashSet 不允许集合中有重复的值（如果有重复的值，会插入失败），而 HashMap 键不能重复，值可以重复（如果键重复会覆盖原来的值</p>
+                            </div>
+                        </div>
+
+                        <div id="q15" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q15</span> 15.什么是反射？使用场景有哪些？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>在 Java 中，反射是指在运行时检查和操作类、接口、字段、方法等程序结构的能力。通过反射，可以在运行时获取类的信息，创建类的实例，调用类的方法，访问和修改类的字段等。</p>
+                                
+                                <p><strong class="text-zinc-200">反射使用场景：</strong></p>
+                                <p>编程开发工具的代码提示，如 IDEA 或 Eclipse 等，在写代码时会有代码（属性或方法名）提示，这就是通过反射实现的。</p>
+                                <p>很多知名的框架如 Spring，为了让程序更简洁、更优雅，以及功能更丰富，也会使用到反射，比如 Spring 中的依赖注入就是通过反射实现的。</p>
+                                <p>数据库连接框架也会使用反射来实现调用不同类型的数据库（驱动）。</p>
+                                
+                                <p><strong class="text-zinc-200">反射的关键实现方法有以下几个：</strong></p>
+                                <p><strong>得到类</strong>：Class.forName("类名")</p>
+                                <p><strong>得到所有字段</strong>：getDeclaredFields()</p>
+                                <p><strong>得到所有方法</strong>：getDeclaredMethods()</p>
+                                <p><strong>得到构造方法</strong>：getDeclaredConstructor()</p>
+                                <p><strong>得到实例</strong>：newInstance()</p>
+                                <p><strong>调用方法</strong>：invoke()</p>
+                            </div>
+                        </div>
+
+                        <div id="q16" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q16</span> 16.浅克隆和深克隆有什么区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>- 浅克隆：克隆出来的新对象与原始对象共享引用类型的属性。也就是说，新对象中的引用类型属性指向的是原始对象中相同的引用类型属性。如果修改了新对象中的引用类型属性，原始对象中的相应属性也会被修改。在 Java 中，可以通过实现 Cloneable 接口和重写 clone() 方法来实现浅克隆。</p>
+                                <p>- 深克隆：克隆出来的新对象与原始对象不共享引用类型的属性。也就是说，新对象中的引用类型属性指向的是新的对象，而不是原始对象中相同的引用类型属性。如果修改了新对象中的引用类型属性，原始对象中的相应属性不会被修改。</p>
+                                
+                                <p>深克隆的实现方法有很多，比如以下几个：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>所有引用属性都实现克隆，整个对象就变成了深克隆。</li>
+                                    <li>使用 JDK 自带的字节流序列化和反序列化对象实现深克隆。</li>
+                                    <li>使用第三方工具实现深克隆，比如 Apache Commons Lang。</li>
+                                    <li>使用 JSON 工具，如 GSON、FastJSON、Jackson 序列化和反序列化对象实现深克隆。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q17" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q17</span> 17.成员变量和局部变量的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">语法形式</strong>：从语法形式上看，成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；成员变量可以被 <code>public</code>,<code>private</code>,<code>static</code> 等修饰符所修饰，而局部变量不能被访问控制修饰符及 <code>static</code> 所修饰；但是，成员变量和局部变量都能被 <code>final</code> 所修饰。</p>
+                                <p><strong class="text-zinc-200">存储方式</strong>：从变量在内存中的存储方式来看，如果成员变量是使用 <code>static</code> 修饰的，那么这个成员变量是属于类的，如果没有使用 <code>static</code> 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。</p>
+                                <p><strong class="text-zinc-200">生存时间</strong>：从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动生成，随着方法的调用结束而消亡。</p>
+                                <p><strong class="text-zinc-200">默认值</strong>：从变量是否有默认值来看，成员变量如果没有被赋初始值，则会自动以类型的默认值而赋值（一种情况例外:被 <code>final</code> 修饰的成员变量也必须显式地赋值），而局部变量则不会自动赋值，局部变量如果我们不手动赋初始值会报错。</p>
+                            </div>
+                        </div>
+
+                        <div id="q18" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q18</span> 18.java语言有哪些特点？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>面向对象（封装 继承 多态）</li>
+                                    <li>平台无关性（java虚拟机实现平台无关性）</li>
+                                    <li>支持多线程</li>
+                                    <li>可靠性（具备异常处理和自动内存管理机制）</li>
+                                    <li>安全性（Java 语言本身的设计就提供了多重安全防护机制如访问权限修饰符、限制程序直接访问操作系统资源）、</li>
+                                    <li>解释与编译并存（编译阶段：java文件编译成.class字节码文件    解释阶段：JVM加载字节码文件将其解释为机器码，然后在计算机上执行）</li>
+                                </ol>
+                                <p>JIT:即时编译     有些方法和代码块是经常需要被调用的(也就是所谓的热点代码)，所以后面引进了 <strong>JIT（Just in Time Compilation）</strong> 编译器，而 JIT 属于运行时编译。当 JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用</p>
+                            </div>
+                        </div>
+
+                        <div id="q19" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q19</span> 19.JDK、JRE、JVM、JIT 这四者的关系？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/jdk-jre-jvm-jit.png" alt="JDK、JRE、JVM、JIT 这四者的关系" style="zoom:80%;" />
+                                <p><strong class="text-zinc-200">JDK:java开发工具包</strong></p>
+                                <p>包含了 JRE，同时还包含了编译 java 源码的编译器 javac 以及一些其他工具比如 javadoc（文档注释工具）、jdb（调试器）、jconsole（基于 JMX 的可视化监控⼯具）、javap（反编译工具）等等</p>
+                                <p><strong class="text-zinc-200">JRE: java 运行时环境</strong></p>
+                                <p>主要包括 Java 虚拟机（JVM）、Java 基础类库（Class Library）</p>
+                                <p><strong class="text-zinc-200">JVM:java虚拟机</strong></p>
+                                <p>执行Java字节码，将其解释成底层的机器码，然后在宿主机上运行</p>
+                                <p><strong class="text-zinc-200">JIT:</strong></p>
+                                <p>JIT（Just-In-Time）编译器是一种在程序运行时将字节码编译成本地机器码的技术。它是Java虚拟机（JVM）的一部分，用来提高Java程序的执行效率。                JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用</p>
+                            </div>
+                        </div>
+
+                        <div id="q20" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q20</span> 20.为什么说 Java 语言“编译与解释并存”？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>这是因为 Java 语言既具有编译型语言的特征，也具有解释型语言的特征。因为 Java 程序要经过先编译，后解释两个步骤，由 Java 编写的程序需要先经过编译步骤，生成字节码（<code>.class</code> 文件），这种字节码必须由 Java 解释器来解释执行。</p>
+                            </div>
+                        </div>
+
+                        <div id="q21" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q21</span> 21.java和c++区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>Java 不提供指针来直接访问内存，程序内存更加安全</li>
+                                    <li>Java 的类是单继承的，C++ 支持多重继承；虽然 Java 的类不可以多继承，但是接口可以多继承。</li>
+                                    <li>Java 有自动内存管理垃圾回收机制(GC)，不需要程序员手动释放无用内存。</li>
+                                    <li>Java在任何安装了Java虚拟机（JVM）的平台上都可以运行，有跨平台的特性</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q22" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q22</span> 22.标识符和关键字的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>在我们编写程序的时候，需要大量地为程序、类、变量、方法等取名字，于是就有了 <strong>标识符</strong> 。简单来说， <strong>标识符就是一个名字</strong> 。</p>
+                                <p>有一些标识符，Java 语言已经赋予了其特殊的含义，只能用于特定的地方，这些特殊的标识符就是 <strong>关键字</strong> 。简单来说，<strong>关键字是被赋予特殊含义的标识符</strong> 。</p>
+                            </div>
+                        </div>
+
+                        <div id="q23" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q23</span> 23.java中有几种基本数据类型了解吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>8种。</p>
+                                <p>6种数字类型：</p>
+                                <p>		4种整数型：byte,shot,int,long（默认值0 0 0 0L）</p>
+                                <p>		2中浮点型：float,double（默认值 0.0f 0.0d）</p>
+                                <p>1中字符类型：char（默认值\u0000）</p>
+                                <p>1中布尔类型：boolean（默认值false）</p>
+                            </div>
+                        </div>
+
+                        <div id="q24" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q24</span> 24.基本类型和包装类型的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>包装类型属于引用数据类型</li>
+                                    <li>包装类型可用于泛型，而基本类型不可以</li>
+                                    <li>相比于包装类型（对象类型）， 基本数据类型占用的空间往往非常小</li>
+                                    <li>成员变量包装类型不赋值就是 <code>null</code> ，而基本类型有默认值且不是 <code>null</code></li>
+                                    <li>对于基本数据类型来说，<code>==</code> 比较的是值。对于包装数据类型来说，<code>==</code> 比较的是对象的内存地址。所有整型包装类对象之间值的比较，全部使用 <code>equals()</code> 方法。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q25" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q25</span> 25.静态方法为什么不能调用非静态成员?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>==<strong>静态方法是属于类的</strong>==，在类加载的时候就会分配内存，可以通过类名直接访问。而==<strong>非静态成员属于实例对象</strong>==，只有在对象实例化之后才存在，需要通过类的实例对象去访问。</p>
+                                <p>在类的非静态成员不存在的时候静态方法就已经存在了，此时调用在内存中还不存在的非静态成员，属于非法操作。</p>
+                            </div>
+                        </div>
+
+                        <div id="q26" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q26</span> 26.面向对象和面向过程的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>- <strong>面向过程编程（POP）</strong>：面向过程把解决问题的过程拆成一个个方法，通过一个个方法的执行解决问题。</p>
+                                <p>- <strong>面向对象编程（OOP）</strong>：面向对象会先抽象出对象，然后用对象执行方法的方式解决问题。</p>
+                                <p>面向对象的优点：易维护，易复用，易扩展</p>
+                            </div>
+                        </div>
+
+                        <div id="q27" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q27</span> 27.如果一个类没有声明构造方法，该程序能正确执行吗?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>构造方法是一种特殊的方法，主要作用是完成对象的初始化工作。</p>
+                                <p>如果一个类没有声明构造方法，也可以执行！因为一个类即使没有声明构造方法也会有默认的不带参数的构造方法。如果我们自己添加了类的构造方法（无论是否有参），Java 就不会添加默认的无参数的构造方法了。</p>
+                            </div>
+                        </div>
+
+                        <div id="q28" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q28</span> 28.构造方法有哪些特点？是否可被 override?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>构造方法具有以下特点：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>名称与类名相同</strong>：构造方法的名称必须与类名完全一致。</li>
+                                    <li><strong>没有返回值</strong>：构造方法没有返回类型，且不能使用 <code>void</code> 声明。</li>
+                                    <li><strong>自动执行</strong>：在生成类的对象时，构造方法会自动执行，无需显式调用。</li>
+                                </ul>
+                                <p>构造方法<strong>不能被重写（override）</strong>，但<strong>可以被重载（overload）</strong>。因此，一个类中可以有多个构造方法，这些构造方法可以具有不同的参数列表，以提供不同的对象初始化方式。</p>
+                            </div>
+                        </div>
+
+                        <div id="q29" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q29</span> 29.字符串常量池的作用了解吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>字符串常量池</strong> 是 JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门开辟的一块区域，主要目的是为了避免字符串的重复创建。</p>
+                                <p>String s1 = new String("abc");这句话创建了几个字符串对象？</p>
+                                <p>答：会创建 1 或 2 个字符串对象。</p>
+                            </div>
+                        </div>
+
+                        <div id="q30" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q30</span> 30.Exception 和 Error 有什么区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong><code>Exception</code></strong> :程序本身可以处理的异常，可以通过 <code>catch</code> 来进行捕获。</p>
+                                <p><strong><code>Error</code></strong>：<code>Error</code> 属于程序无法处理的错误。例如 Java 虚拟机运行错误（<code>Virtual MachineError</code>）、虚拟机内存不够错误(`OutOfMemoryError`)、类定义错误（<code>NoClassDefFoundError</code>）等 。这些异常发生时，Java 虚拟机（JVM）一般会选择线程终止。</p>
+                                <p><strong>Checked Exception</strong> 即 受检查异常 ，Java 代码在编译过程中，如果受检查异常没有被 <code>catch</code>或者<code>throws</code> 关键字处理的话，就没办法通过编译。</p>
+                                <p><code>RuntimeException</code> 及其子类都统称为**非受检查异常**，常见的有（建议记下来，日常开发中会经常用到）：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><code>NullPointerException</code>(空指针错误)</li>
+                                    <li><code>IllegalArgumentException</code>(参数错误比如方法入参类型错误)</li>
+                                    <li><code>NumberFormatException</code>（字符串转换为数字格式错误，<code>IllegalArgumentException</code>的子类）</li>
+                                    <li><code>ArrayIndexOutOfBoundsException</code>（数组越界错误）</li>
+                                    <li><code>ClassCastException</code>（类型转换错误）</li>
+                                    <li><code>ArithmeticException</code>（算术错误）</li>
+                                    <li><code>SecurityException</code> （安全错误比如权限不够）</li>
+                                    <li><code>UnsupportedOperationException</code>(不支持的操作错误比如重复创建同一用户)</li>
+                                    <li>……</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q31" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q31</span> 31.Throwable 类常用方法有哪些？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><code>String getMessage()</code>: 返回异常发生时的简要描述</p>
+                                <p><code>String toString()</code>: 返回异常发生时的详细信息</p>
+                                <p><code>String getLocalizedMessage()</code>: 返回异常对象的本地化信息。使用 <code>Throwable</code> 的子类覆盖这个方法，可以生成本地化信息。如果子类没有覆盖该方法，则该方法返回的信息与 <code>getMessage()</code>返回的结果相同</p>
+                                <p><code>void printStackTrace()</code>: 在控制台上打印 <code>Throwable</code> 对象封装的异常信息</p>
+                            </div>
+                        </div>
+
+                        <div id="q32" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q32</span> 32.什么是泛型？有什么作用？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>Java 泛型（Generics）</strong> 是 JDK 5 中引入的一个新特性。使用泛型参数，可以增强代码的可读性以及稳定性。</p>
+                                <p>编译器可以对泛型参数进行检测，并且通过泛型参数可以指定传入的对象类型。比如 <code>ArrayList&lt;Person&gt; persons = new ArrayList&lt;Person&gt;()</code> 这行代码就指明了该 <code>ArrayList</code> 对象只能传入 <code>Person</code> 对象，如果传入其他类型的对象就会报错。</p>
+                            </div>
+                        </div>
+
+                        <div id="q33" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q33</span> 33.何谓注解？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><code>Annotation</code> （注解） 是 Java5 开始引入的新特性，可以看作是一种特殊的注释，主要用于修饰类、方法或者变量，提供某些信息供程序在编译或者运行时使用。</p>
+                                <p>注解本质是一个继承了<code>Annotation</code> 的特殊接口：</p>
+                                <p>JDK 提供了很多内置的注解（比如 <code>@Override</code>、<code>@Deprecated</code>），同时，我们还可以自定义注解。</p>
+                                <p>注解只有被解析之后才会生效，常见的解析方法有两种：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>编译期直接扫描</strong>：编译器在编译 Java 代码的时候扫描对应的注解并处理，比如某个方法使用<code>@Override</code> 注解，编译器在编译的时候就会检测当前的方法是否重写了父类对应的方法。</li>
+                                    <li><strong>运行期通过反射处理</strong>：像框架中自带的注解(比如 Spring 框架的 <code>@Value</code>、<code>@Component</code>)都是通过反射来进行处理的。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q34" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q34</span> 34.java的引用传递是怎么样的？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>Java 中将实参传递给方法（或函数）的方式是 <strong>值传递</strong>：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>如果参数是基本类型的话，很简单，传递的就是基本类型的字面量值的拷贝，会创建副本。</li>
+                                    <li>如果参数是引用类型，传递的就是实参所引用的对象在堆中地址值的拷贝，同样也会创建副本。</li>
+                                </ul>
+                                <p>java不引入引用传递是因为：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>出于安全考虑，方法内部对值进行的操作，对于调用者都是未知的（把方法定义为接口，调用方不关心具体实现）。你也想象一下，如果拿着银行卡去取钱，取的是 100，扣的是 200，是不是很可怕。</li>
+                                    <li>Java 之父 James Gosling 在设计之初就看到了 C、C++ 的许多弊端，所以才想着去设计一门新的语言 Java。在他设计 Java 的时候就遵循了简单易用的原则，摒弃了许多开发者一不留意就会造成问题的“特性”，语言本身的东西少了，开发者要学习的东西也少了。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q35" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q35</span> 35.说说 List, Set, Queue, Map 四者的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><code>List</code>: 存储的元素是有序的、可重复的。</p>
+                                <p><code>Set</code>: 存储的元素不可重复的。</p>
+                                <p><code>Queue</code>: 按特定的排队规则来确定先后顺序，存储的元素是有序的、可重复的。</p>
+                                <p><code>Map</code>: 使用键值对（key-value）存储，类似于数学上的函数 y=f(x)，"x" 代表 key，"y" 代表 value，key 是无序的、不可重复的，value 是无序的、可重复的，每个键最多映射到一个值。</p>
+                            </div>
+                        </div>
+
+                        <div id="q36" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q36</span> 36.ConcurrentHashMap
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>HashMap 线程不安全主要体现在以下两方面：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>在 JDK 1.7 中的死循环问题</li>
+                                    <li>所有版本中的数据覆盖问题</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">JDK1.7 的 ConcurrentHashMap</strong>：</p>
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/java7_concurrenthashmap.png" alt="Java7 ConcurrentHashMap 存储结构" style="zoom:80%;" />
+                                
+                                <p><strong class="text-zinc-200">JDK1.8 的 ConcurrentHashMap</strong>：</p>
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/java8_concurrenthashmap.png" alt="Java8 ConcurrentHashMap 存储结构" style="zoom:80%;" />
+                                
+                                <p>JDK1.8 的 <code>ConcurrentHashMap</code> 不再是 <strong>Segment 数组 + HashEntry 数组 + 链表</strong>，而是 <strong>Node 数组 + 链表 / 红黑树</strong>。</p>
+                                
+                                <p><strong class="text-zinc-200">JDK 1.7 和 JDK 1.8 的 ConcurrentHashMap 实现有什么不同？</strong></p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>线程安全实现方式</strong>：JDK 1.7 采用 <code>Segment</code> 分段锁来保证安全， <code>Segment</code> 是继承自 <code>ReentrantLock</code>。JDK1.8 放弃了 <code>Segment</code> 分段锁的设计，采用 <code>Node + CAS + synchronized</code> 保证线程安全，锁粒度更细，<code>synchronized</code> 只锁定当前链表或红黑二叉树的首节点。</li>
+                                    <li><strong>Hash 碰撞解决方法</strong> : JDK 1.7 采用拉链法，JDK1.8 采用拉链法结合红黑树（链表长度超过一定阈值时，将链表转换为红黑树）。</li>
+                                    <li><strong>并发度</strong>：JDK 1.7 最大并发度是 Segment 的个数，默认是 16。JDK 1.8 最大并发度是 Node 数组的大小，并发度更大。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q37" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q37</span> 37.Exception主要分为受检异常和运行时异常
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>在 Java 中，异常（Exception）主要分为两大类：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>受检异常（Checked Exception）</strong></li>
+                                    <li><strong>运行时异常（Runtime Exception）</strong></li>
+                                </ol>
+                                
+                                <p>==<strong>受检异常：</strong>==</p>
+                                <p>- <strong>描述</strong>: 受检异常是编译时异常，必须在代码中显式处理（通过 <code>try-catch</code> 块或通过 <code>throws</code> 子句声明抛出）。这些异常通常是由于外部因素引起的，如文件未找到、数据库连接失败等，程序需要对这些异常进行处理，以确保程序的健壮性。</p>
+                                <p>- 常见的例子</p>
+                                <p>  :</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><code>IOException</code></li>
+                                    <li><code>SQLException</code></li>
+                                    <li><code>ClassNotFoundException</code></li>
+                                </ul>
+                                
+                                <p>==<strong>运行时异常</strong>：==</p>
+                                <p><strong>描述</strong>: 运行时异常是未受检异常，通常是由编程错误引起的，例如除零错误、空指针引用、数组越界等。这类异常在编译时不强制要求处理，可以选择不捕获或抛出。运行时异常一般表示程序员的逻辑错误，因此往往需要通过调试或重构代码来解决。</p>
+                                <p><strong>常见的例子</strong>:</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><code>NullPointerException</code></li>
+                                    <li><code>ArrayIndexOutOfBoundsException</code></li>
+                                    <li><code>ArithmeticException</code></li>
+                                    <li><code>ConcurrentModificationException</code>并发修改异常</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q38" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q38</span> 38.面向对象三大特征？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>封装 继承 多态</p>
+                                
+                                <p><strong class="text-zinc-200">封装：</strong></p>
+                                <p>封装是指把一个对象的状态信息（也就是属性）隐藏在对象内部，不允许外部对象直接访问对象的内部信息。但是可以提供一些可以被外界访问的方法来操作属性。</p>
+                                
+                                <p><strong class="text-zinc-200">继承：</strong></p>
+                                <p>不同类型的对象，相互之间经常有一定数量的共同点。继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承，可以快速地创建新的类，可以提高代码的重用，程序的可维护性，节省大量创建新类的时间 ，提高我们的开发效率。</p>
+                                <p>关于继承如下 3 点请记住：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>子类拥有父类对象所有的属性和方法（包括私有属性和私有方法），但是父类中的私有属性和方法子类是无法访问，<strong>只是拥有</strong>。</li>
+                                    <li>子类可以拥有自己属性和方法，即子类可以对父类进行扩展。</li>
+                                    <li>子类可以用自己的方式实现父类的方法。</li>
+                                </ol>
+                                
+                                <p><strong class="text-zinc-200">多态：</strong></p>
+                                <p>多态，顾名思义，表示一个对象具有多种的状态，具体表现为父类的引用指向子类的实例。</p>
+                                <p>多态的特点:</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>对象类型和引用类型之间具有继承（类）/实现（接口）的关系；</li>
+                                    <li>引用类型变量发出的方法调用的到底是哪个类中的方法，必须在程序运行期间才能确定；</li>
+                                    <li>多态不能调用"只在子类存在但在父类不存在"的方法；</li>
+                                    <li>如果子类重写了父类的方法，真正执行的是子类重写的方法，如果子类没有重写父类的方法，执行的是父类的方法。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="q39" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q39</span> 39.JDK序列化有哪些问题？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>数据体积过大</li>
+                                    <li>有安全漏洞</li>
+                                    <li>可读性差</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q40" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q40</span> 40.HashMap中的hash()方法为什么要右移16位异或?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>如果仅使用 <code>hashCode</code> 的低位来计算数组的索引，容易发生冲突（即不同的键映射到同一个索引）。这种冲突会导致多个键值对被放在同一个桶中，从而退化为链表或红黑树，降低性能。</p>
+                                <p>通过右移16位，将 <code>hashCode</code> 的==高位和低位混合在一起==，可以使哈希值更加均匀分布，减少冲突的概率</p>
+                            </div>
+                        </div>
+
+                        <div id="q41" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q41</span> 41.对象的创建方式有哪些？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>new一个</li>
+                                    <li>反射</li>
+                                    <li>序列号</li>
+                                    <li>实现Cloneable接口重写clone方法</li>
+                                    <li>unsafe类</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="q42" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">Q42</span> 42.java中arrayList里面存储的是地址还是数据？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>在 Java 中，<code>ArrayList</code> 存储的是<strong>对象的引用（地址）</strong>，而不是对象本身的数据。</p>
+                                <pre><code>class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Person p = new Person("Alice");
+        ArrayList&lt;Person&gt; list = new ArrayList&lt;&gt;();
+        list.add(p);
+
+        p.name = "Bob"; // 修改原对象
+
+        System.out.println(list.get(0).name); // 👉 输出 "Bob"
+    }
+}</code></pre>
+                                <p>&gt; 说明：<code>ArrayList</code> 中存的是 <code>p</code> 这个对象的地址（引用），所以即使在外部修改了 <code>p</code> 的内容，<code>list.get(0)</code> 看到的也是修改后的内容。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 id="concurrency" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-purple-600 rounded-full"></span>
+                        并发编程
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div id="c1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C1</span> 1.进程和线程的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>进程和线程的区别也是很明显的，进程是==<strong>资源分配的最小单位</strong>==，线程是 ==<strong>CPU 调度的最小单位</strong>==。具体来说：</p>
+                                <p>- <strong>进程（Process）是指正在运行的一个程序的实例。</strong>每个进程都拥有的资源：堆、栈、虚存空间（页表）、文件描述符等信息。在 Java 中，每个进程都由一个主线程（main thread）启动。当进程运行时，操作系统会为其分配一个进程号，并将其作为一个独立的实体来进行管理。</p>
+                                <p>- <strong>线程（Thread）是指进程中的一个执行单元，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。</strong>在 Java 中，每个线程都拥有自己的栈空间和程序计数器，并且可以访问共享的堆内存。</p>
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/java-runtime-data-areas-jdk1.8.png" alt="Java 运行时数据区域（JDK1.8 之后）" style="zoom:80%;" />
+                                <p>程序计数器私有主要是为了**线程切换后能恢复到正确的执行位置**。**保证线程中的局部变量不被别的线程访问到**，虚拟机栈和本地方法栈是线程私有的。</p>
+                            </div>
+                        </div>
+
+                        <div id="c2" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C2</span> 2.Java 线程和操作系统的线程有啥区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>JDK 1.2 之前，Java 线程是基于绿色线程（Green Threads）实现的，这是一种用户级线程（用户线程），也就是说 JVM 自己模拟了多线程的运行，而不依赖于操作系统。由于绿色线程和原生线程比起来在使用时有一些限制（比如绿色线程不能直接使用操作系统提供的功能如异步 I/O、只能在一个内核线程上运行无法利用多核），在 JDK 1.2 及以后，Java 线程改为基于原生线程（Native Threads）实现，也就是说 JVM 直接使用操作系统原生的内核级线程（内核线程）来实现 Java 线程，由操作系统内核进行线程的调度和管理。</p>
+                                <p>我们上面提到了用户线程和内核线程，考虑到很多读者不太了解二者的区别，这里简单介绍一下：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>用户线程：由用户空间程序管理和调度的线程，运行在用户空间（专门给应用程序使用）。</li>
+                                    <li>内核线程：由操作系统内核管理和调度的线程，运行在内核空间（只有内核程序可以访问）。</li>
+                                </ul>
+                                <p>顺便简单总结一下用户线程和内核线程的区别和特点：用户线程创建和切换成本低，但不可以利用多核。内核态线程，创建和切换成本高，可以利用多核。</p>
+                                <p>一句话概括 Java 线程和操作系统线程的关系：**==现在的 Java 线程的本质其实就是操作系统的线程==**。</p>
+                            </div>
+                        </div>
+
+                        <div id="c3" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C3</span> 3.你工作当中是怎么使用线程的？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>答：==**通过线程池来管理线程资源**==，如果是对外提供服务的接口不使用线程池来创建，有可能在高并发的场景下创建大量的线程从而导致过度的消耗系统和资源，甚至拉垮系统。使用线程池的好处可以减少线程的重复创建与销毁，进而节省系统的资源开销。</p>
+                            </div>
+                        </div>
+
+                        <div id="c4" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C4</span> 4.线程是生命周期和状态？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>6种。</p>
+                                <p><strong class="text-zinc-200">NEW: 初始状态</strong>，线程被创建出来但没有被调用 <code>start()</code> 。</p>
+                                <p><strong class="text-zinc-200">RUNNABLE: 运行状态</strong>，线程被调用了 <code>start()</code>等待运行的状态。</p>
+                                <p><strong class="text-zinc-200">BLOCKED：阻塞状态</strong>，需要等待锁释放。</p>
+                                <p><strong class="text-zinc-200">WAITING：等待状态</strong>，表示该线程需要等待其他线程做出一些特定动作（通知或中断）。</p>
+                                <p><strong class="text-zinc-200">TIME_WAITING：超时等待状态</strong>，可以在指定的时间后自行返回而不是像 WAITING 那样一直等待。</p>
+                                <p><strong class="text-zinc-200">TERMINATED：终止状态</strong>，表示该线程已经运行完毕。</p>
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/640.png" alt="Java 线程状态变迁图" style="zoom: 67%;" />
+                                <p>当线程执行 <code>wait()</code>方法之后，线程进入 **WAITING（等待）** 状态。进入等待状态的线程需要依靠其他线程的通知才能够返回到运行状态。</p>
+                                <p><strong>TIMED_WAITING(超时等待)</strong> 状态相当于在等待状态的基础上增加了超时限制，比如通过 <code>sleep（long millis）</code>方法或 <code>wait（long millis）</code>方法可以将线程置于 TIMED_WAITING 状态。当超时时间结束后，线程将会返回到 RUNNABLE 状态。</p>
+                                <p>当线程进入 <code>synchronized</code> 方法/块或者调用 <code>wait</code> 后（被 <code>notify</code>）重新进入 <code>synchronized</code> 方法/块，但是锁被其它线程占有，这个时候线程就会进入 **BLOCKED（阻塞）** 状态。</p>
+                                <p>线程在执行完了 <code>run()</code>方法之后将会进入到 **TERMINATED（终止）** 状态。</p>
+                            </div>
+                        </div>
+
+                        <div id="c5" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C5</span> 5.什么是线程上下文切换?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>线程在执行过程中会有自己的==运行条件和状态==（也称上下文），比如上文所说到过的程序计数器，栈信息等。当出现如下情况的时候，线程会从占用 CPU 状态中退出。</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>主动让出 CPU，比如调用了 <code>sleep()</code>, <code>wait()</code> 等。</li>
+                                    <li>时间片用完，因为操作系统要防止一个线程或者进程长时间占用 CPU 导致其他线程或者进程饿死。</li>
+                                    <li>调用了阻塞类型的系统中断，比如请求 IO，线程被阻塞。</li>
+                                    <li>被终止或结束运行</li>
+                                </ul>
+                                <p>这其中前三种都会发生线程切换，线程切换意味着需要保存当前线程的上下文，留待线程下次占用 CPU 的时候恢复现场。并加载下一个将要占用 CPU 的线程上下文。这就是所谓的 **上下文切换**。</p>
+                                <p>上下文切换是现代操作系统的基本功能，因其每次需要保存信息恢复信息，这将会占用 CPU，内存等系统资源进行处理，也就意味着效率会有一定损耗，如果频繁切换就会造成整体效率低下。</p>
+                            </div>
+                        </div>
+
+                        <div id="c6" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C6</span> 6.Thread#sleep() 方法和 Object#wait() 方法对比
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong class="text-zinc-200">共同点</strong>：两者都可以暂停线程的执行。</p>
+                                <p><strong class="text-zinc-200">区别</strong>：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong><code>sleep()</code> 方法没有释放锁，而 <code>wait()</code> 方法释放了锁</strong> 。</li>
+                                    <li><code>wait()</code> 通常被用于线程间交互/通信，<code>sleep()</code>通常被用于暂停执行。</li>
+                                    <li><code>wait()</code> 方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的 <code>notify()</code>或者 <code>notifyAll()</code> 方法。<code>sleep()</code>方法执行完成后，线程会自动苏醒，或者也可以使用 <code>wait(long timeout)</code> 超时后线程会自动苏醒。</li>
+                                    <li><code>sleep()</code> 是 <code>Thread</code> 类的静态本地方法，<code>wait()</code> 则是 <code>Object</code> 类的本地方法。为什么这样设计呢？下一个问题就会聊到。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="c7" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C7</span> 7.Synchronized和Lock区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>1、Synchronized 内置的Java关键字， Lock 是一个Java类</li>
+                                    <li>2、Synchronized 无法判断获取锁的状态，Lock 可以判断是否获取到了锁</li>
+                                    <li>3、Synchronized 会自动释放锁，lock 必须要手动释放锁！如果不释放锁，**死锁**</li>
+                                    <li>4、Synchronized 线程 1（获得锁，如果线程1阻塞）、线程2（等待，傻傻的等）；Lock锁就不一定会等待下去；</li>
+                                    <li>5、Synchronized **可重入锁，不可以中断的，非公平**；Lock ，**可重入锁，可以判断锁，非公平**（可以自己设置）；</li>
+                                    <li>6、Synchronized 适合锁少量的代码同步问题，Lock 适合锁大量的同步代码！</li>
+                                </ul>
+                                
+                                <p><strong class="text-zinc-200">可中断锁和不可中断锁有什么区别？</strong></p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>可中断锁</strong>：获取锁的过程中可以被中断，不需要一直等到获取锁之后 才能进行其他逻辑处理。<code>ReentrantLock</code> 就属于是可中断锁。</li>
+                                    <li><strong>不可中断锁</strong>：一旦线程申请了锁，就只能等到拿到锁以后才能进行其他的逻辑处理。 <code>synchronized</code> 就属于是不可中断锁。</li>
+                                </ul>
+                                
+                                <p>lock的3个方法 <code>lock.lock()</code>上锁 ,<code>lock.unlock()</code>解锁和<code>lock.trylock()</code>尝试获取锁，而不会一直阻塞</p>
+                                <p>Lock默认是非公平锁，我们在构造时参数为true可以设置lock为公平锁</p>
+                                <p>公平锁：非常公平，先来后到排队，后来的线程肯定后执行</p>
+                                <p>非公平锁：即时前面的线程排了很久队，后来了一个线程一样和他们竞争抢锁</p>
+                                
+                                <p><strong class="text-zinc-200">Lock用法:</strong></p>
+                                <pre><code>Lock lock = new ReentrantLock();
+lock.lock();// 加锁
+try {
+    // 业务代码
+    if (number > 0) {
+        System.out.println(Thread.currentThread().getName() + "卖出了" +
+                (50 - (--number)) + "张票，剩余:" + number + "张票");
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+    lock.unlock();// 解锁
+}
+</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="c8" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C8</span> 8.八锁问题
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>==synchronized的锁对象是方法的调用者==</p>
+                                <pre><code>class Test1{
+    public synchronized void  sendMsg(){
+        System.out.println("发短信");
+    }
+    public synchronized void callPhone(){
+        System.out.println("打电话");
+    }
+}
+class Main1{
+   Test1 test=new Test1();
+    new Thread(()->{
+        test.sendMsg();
+    },"t1").start();
+    new Thread(()->{
+	    test.callPhone();
+    },"t2").start();
+}
+</code></pre>
+                                <p>上面两个方法用的是同一个锁，谁先拿到执行谁，先拿到的没执行完，别的线程调另一方法不会执行，会一直等待</p>
+                                <p><strong>每个对象都有对象头 对象头里有锁的状态 用数字区别</strong></p>
+                                <p>静态方法加synchronized的话锁的就是Class类模板</p>
+                            </div>
+                        </div>
+
+                        <div id="c9" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C9</span> 9.CopyOnWriteArrayList
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>一些集合类如arrayList在并发下是不安全的，如果我们多线程来向一个list中add元素会抛出==ConcurrentModificationException并发修改异常==</p>
+                                <p>解决方案：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><code>Vector</code></li>
+                                    <li><code>Collections.synchronizedList(new ArrayList&lt;&gt;())</code></li>
+                                    <li><code>CopyOnWriteArrayList</code></li>
+                                </ol>
+                                <p><strong>CopyOnWriteArrayList:</strong></p>
+                                <p>写入时复制</p>
+                                <p>CopyOnWriteArrayList比Vector强在哪里？</p>
+                                <p>Vector使用的synchronized关键字，效率低很多，CopyOnWriteArrayList使用的lock锁</p>
+                                <p>CopyOnWriteArrayList适用于读多写少</p>
+                            </div>
+                        </div>
+
+                        <div id="c10" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C10</span> 10.CountDownLatch,CyclicBarrier和Semaphore
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>CountDownLatch：</p>
+                                <pre><code>import java.util.concurrent.CountDownLatch;
+// 计数器
+public class CountDownLatchDemo {
+    public static void main(String[] args) throws InterruptedException {
+        // 总数是6，必须要执行任务的时候，再使用！
+        CountDownLatch countDownLatch = new CountDownLatch(6);//1.创建countDownLatch初始化
+        for (int i = 1; i <=6 ; i++) {
+            new Thread(()->{
+                System.out.println(Thread.currentThread().getName()
+                                                           +" Go out");
+                countDownLatch.countDown(); //2.减一操作
+            },String.valueOf(i)).start();
+        }
+        countDownLatch.await(); // 3.等待计数器归零，然后再向下执行
+        System.out.println("Close Door");
+    }
+
+</code></pre>
+                                <p>CyclicBarrier：循环栅栏</p>
+                                <pre><code>import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+public class  CyclicBarrierDemo {
+    public static void main(String[] args) {
+        /*
+         * 集齐7颗龙珠召唤神龙
+         */
+        // 召唤龙珠的线程
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(7,()->{
+            System.out.println("召唤神龙成功！");//等七个线程都执行到cyclicBarrier.await()再执行这句
+        });
+        for (int i = 1; i <=7 ; i++) {
+            final int temp = i;
+            new Thread(()->{
+                System.out.println(Thread.currentThread().getName()+"收集"+temp+"个龙珠");
+                try {
+                    cyclicBarrier.await(); // 等待
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+    }
+}
+</code></pre>
+                                <p>Semaphore：信号量</p>
+                                <pre><code>import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
+public class SemaphoreDemo {
+    public static void main(String[] args) {
+        // 线程数量：停车位! 限流！、
+        // 如果已有3个线程执行（3个车位已满），则其他线程需要等待‘车位’释放后，才能执行！
+        Semaphore semaphore = new Semaphore(3);//信号量为3
+        for (int i = 1; i <=6 ; i++) {
+            new Thread(()->{
+                try {
+                    semaphore.acquire();// acquire() 得到
+                    System.out.println(Thread.currentThread().getName()+"抢到车位");
+                    TimeUnit.SECONDS.sleep(2);
+                    System.out.println(Thread.currentThread().getName()+"离开车位");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    semaphore.release(); // release() 释放 
+                }
+            },String.valueOf(i)).start();
+        }
+    }
+}
+</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="c11" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C11</span> 11.ReadWriteLock读写锁
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>使用:</p>
+                                <pre><code>private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();//创建
+readWriteLock.writeLock().lock();//写锁
+readWriteLock.writeLock().unlock();
+readWriteLock.readLock().lock();//读锁
+readWriteLock.readLock().unlock();
+</code></pre>
+                                <p>写锁只能一个一个线程依次执行，读锁可以多个线程同时执行</p>
+                                <p>疑问：那读的时候为什么还要加读锁呢，不加锁不也是多个线程同时读吗？</p>
+                                <p>答：加了读锁就会防止读的时候有写入操作导致幻读</p>
+                                <p>* ==独占锁（写锁）== 一次只能被一个写线程占有</p>
+                                <p>* ==共享锁（读锁）== 多个读线程可以同时占有,但写线程不能占用</p>
+                            </div>
+                        </div>
+
+                        <div id="c12" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C12</span> 12.阻塞队列
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <img src="https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240817154522676.png" alt="image-20240817154522676" style="zoom:67%;" />
+                                <pre><code>ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue&lt;&gt;(3);
+</code></pre>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240817155136822.png`</p>
+                                <p><strong>SynchronousQueue 同步队列：</strong></p>
+                                <pre><code>BlockingQueue&lt;String&gt; blockingQueue = new SynchronousQueue&lt;&gt;(); // 同步队列
+</code></pre>
+                                <p><strong>没有容量，进去一个元素，必须等待取出来之后，才能再往里面放一个元素！</strong></p>
+                                <p>put、take</p>
+                            </div>
+                        </div>
+
+                        <div id="c13" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C13</span> 13.线程池的好处？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>减少资源消耗</strong></li>
+                                    <li><strong>提高响应速度</strong></li>
+                                    <li><strong>更好的控制线程数量</strong>：通过线程池，可以限制系统中同时运行的线程数量，防止由于创建过多线程而导致系统资源耗尽或性能下降。</li>
+                                    <li><strong>方便管理和调优</strong>：线程池提供了多种配置参数（如核心线程数、最大线程数、队列长度等），使得开发者可以根据应用的特点来调优线程池的性能。</li>
+                                    <li><strong>简化开发</strong>：使用线程池可以简化并发编程的难度，开发者只需将任务提交给线程池，无需关心线程的创建、管理和销毁等复杂的操作。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="c14" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C14</span> 14.并发与并行的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>- 并发：两个及两个以上的作业在同一 时间段 内执行。</p>
+                                <p>- 并行：两个及两个以上的作业在同一 时刻 执行。</p>
+                            </div>
+                        </div>
+
+                        <div id="c15" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C15</span> 15.为什么要使用多线程？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>从计算机底层来说：</strong> 线程可以比作是轻量级的进程，是程序执行的最小单位,==**线程间的切换和调度的成本远远小于进程**==。另外，多核 CPU 时代意味着多个线程可以同时运行，这减少了线程上下文切换的开销。</p>
+                                <p><strong>从当代互联网发展趋势来说：</strong> 现在的系统动不动就要求百万级甚至千万级的并发量，而多线程并发编程正是开发高并发系统的基础，==**利用好多线程机制可以大大提高系统整体的并发能力以及性能**==。</p>
+                            </div>
+                        </div>
+
+                        <div id="c16" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C16</span> 16.单核CPU支持java多线程吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>单核 CPU 是支持 Java 多线程的。操作系统通过时间片轮转的方式，将 CPU 的时间分配给不同的线程。尽管单核 CPU 一次只能执行一个任务，但通过快速在多个线程之间切换，可以让用户**感觉**多个任务是同时进行的。</p>
+                            </div>
+                        </div>
+
+                        <div id="c17" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C17</span> 17.线程类型和如何设置线程池最大线程数量？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>单核 CPU 同时运行多个线程的效率是否会高，取决于线程的类型和任务的性质。一般来说，有两种类型的线程：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>CPU 密集型</strong>：CPU 密集型的线程主要进行计算和逻辑处理，需要占用大量的 CPU 资源。</li>
+                                    <li><strong>IO 密集型</strong>：IO 密集型的线程主要进行输入输出操作，如读写文件、网络通信等，需要等待 IO 设备的响应，而不占用太多的 CPU 资源。</li>
+                                </ol>
+                                <p><strong>线程池(new ThreadPoolExecutor(7个参数))---最大的线程如何去设置：</strong></p>
+                                <p>io密集型：判断程序中十分耗io的线程数,设置最大线程数大于这个数（通常是两倍）</p>
+                                <p>cpu密集型：cpu几核就设置最大线程为几，可以保持cpu效率最高</p>
+                                <pre><code>Runtime.getRuntime().availableProcessors()//获取cpu核数
+</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="c18" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C18</span> 18.什么是线程死锁？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>多个线程同时被阻塞，它们中的一个或者全部都在等待某个资源被释放。由于线程被无限期地阻塞，因此程序不可能正常终止。</p>
+                                <p>线程 A 持有资源 2，线程 B 持有资源 1，他们同时都想申请对方的资源，所以这两个线程就会互相等待而进入死锁状态。</p>
+                                <p>死锁的四个必要条件：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>互斥条件 （Mutual Exclusion）</strong>：资源只能由一个线程（或进程）独占使用。即某资源在某一时刻只能被一个线程占有，如果有其他线程请求该资源，则该线程必须等待。</li>
+                                    <li><strong>占有并等待 （Hold and Wait）</strong>：一个线程已经占有了至少一个资源，同时又请求新的资源，但该资源当前被其他线程占用，所以该线程进入等待状态。</li>
+                                    <li><strong>不可剥夺 （No Preemption）</strong>：线程已经占有的资源在未使用完之前，不能被强行剥夺，只能在使用完毕后由线程自行释放。</li>
+                                    <li><strong>循环等待 （Circular Wait）</strong>：存在一个线程的集合，每个线程都在等待下一个线程所占有的资源，形成一个循环等待链。例如，线程A等待线程B所占有的资源，线程B等待线程C所占有的资源，而线程C又在等待线程A所占有的资源。</li>
+                                </ul>
+                                <p>破坏四个条件中的任意一个都能破解死锁</p>
+                                <p>如何发现死锁？</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>使用jsp -l定位进程号</li>
+                                    <li>使用jstack 进程号找到死锁问题</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="c19" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C19</span> 19.线程池：3大方法，7大参数，4种拒绝策略
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>3大方法：</p>
+                                <pre><code>Executors.newSingleThreadExecutor();// 创建单个线程的线程池
+Executors.newFixedThreadPool(5);// 创建一个固定大小的线程池
+Executors.newCachedThreadPool();// 创建一个可伸缩的线程池
+</code></pre>
+                                <p>☆但是建议使用底层方法new ThreadPoolExecutor(7个参数)来创建线程池， 防止oom</p>
+                                <p>在Java中，使用 Executors 类提供的静态方法创建线程池时，可能会导致OOM（OutOfMemoryError）的问题，主要是由于其默认的线程池配置可能不够灵活，导致资源管理不当。以下是一些可能导致OOM的原因：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>固定大小的线程池</strong>：  Executors 类提供的一些静态方法，例如 Executors.newFixedThreadPool() 创建的线程池是固定大小的，如果提交的任务量超过了线程池的容量，那么任务会被放入无界队列中，导致内存消耗过多。如果持续提交任务，队列可能会无限增长，最终导致内存耗尽。</li>
+                                    <li><strong>无界队列</strong>：  Executors 类创建的线程池通常使用无界队列，例如 LinkedBlockingQueue ，这意味着队列可以无限增长。如果生产者速度快于消费者速度，队列会持续增长，最终导致内存耗尽。</li>
+                                    <li><strong>缓存型线程池</strong>：  Executors.newCachedThreadPool() 创建的线程池是一个可缓存的线程池，它会根据需求动态调整线程数量。但是，如果任务提交速度过快，导致线程数持续增长，最终可能导致内存耗尽。</li>
+                                </ul>
+                                <p>相比之下，使用 ThreadPoolExecutor 类直接创建线程池能够提供更灵活的配置选项，例如指定核心线程数、最大线程数、队列类型以及拒绝策略等。通过合理地配置这些参数，可以更好地控制线程池的行为，避免OOM问题。</p>
+                                <p>7大参数：</p>
+                                <pre><code>public ThreadPoolExecutor(int corePoolSize, // 核心线程池大小
+                           int maximumPoolSize, // 最大核心线程池大小
+                           long keepAliveTime, // 超时没有人调用就会释放
+                           TimeUnit unit, // 超时单位
+                           BlockingQueue&lt;Runnable&gt; workQueue,// 阻塞队列
+                           ThreadFactory threadFactory,// 线程工厂：创建线程的，一般 不用动
+                           RejectedExecutionHandler handle )// 拒绝策略
+</code></pre>
+                                <p>举例：</p>
+                                <pre><code>//手动创建一个线程池
+ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2,
+         5,
+         3,
+         TimeUnit.MINUTES,
+         new LinkedBlockingDeque&lt;&gt;(3),
+         Executors.defaultThreadFactory(),
+         new ThreadPoolExecutor.AbortPolicy());//七个参数
+}
+</code></pre>
+                                <p>4种拒绝策略：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>new ThreadPoolExecutor.AbortPolicy()</strong><br>队列满了，还有任务进来，不处理该任务，抛出异常</li>
+                                    <li><strong>new ThreadPoolExecutor.CallerRunsPolicy()</strong><br>哪来的去哪，比如是main来的任务，队列满了，交回给让main处理</li>
+                                    <li><strong>new ThreadPoolExecutor.DiscardPolicy()</strong><br>队列满了，丢掉任务，不会抛出异常！</li>
+                                    <li><strong>new ThreadPoolExecutor.DiscardOldestPolicy()</strong><br>队列满了，尝试去和最早的竞争，也不会抛出异常！</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="c20" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C20</span> 20.异步回调CompletableFuture
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>没有返回值的 runAsync 异步回调</p>
+                                <pre><code>// 没有返回值的 runAsync 异步回调
+CompletableFuture&lt;Void&gt; completableFuture = CompletableFuture.runAsync(()->{
+    try {
+        TimeUnit.SECONDS.sleep(2);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    System.out.println(
+        Thread.currentThread().getName()+"runAsync=&gt;Void");
+});
+
+System.out.println("1111");
+
+completableFuture.get(); // 获取阻塞执行结果
+</code></pre>
+                                <p>有返回值的 supplyAsync 异步回调</p>
+                                <p>completableFuture.whenComplete()获取成功的返回结果</p>
+                                <p>completableFuture.exceptionally()获取到错误的返回结果</p>
+                                <pre><code>// 有返回值的 supplyAsync 异步回调
+// ajax，成功和失败的回调
+// 返回的是错误信息；
+CompletableFuture&lt;Integer&gt; completableFuture =
+                        CompletableFuture.supplyAsync(()->{
+    System.out.println(Thread.currentThread().getName()
+                                   +"supplyAsync=&gt;Integer");
+    int i = 10/0;
+    return 1024;
+});
+System.out.println(completableFuture.whenComplete((t, u) -> {
+    System.out.println("t=&gt;" + t); // 正常的返回结果
+    System.out.println("u=&gt;" + u);
+    // 错误信息：
+    // java.util.concurrent.CompletionException:
+    // java.lang.ArithmeticException: / by zero
+}).exceptionally((e) -> {
+    System.out.println(e.getMessage());
+    return 233; // 可以获取到错误的返回结果
+}).get());
+</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="c21" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C21</span> 21.JMM java内存模型
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>JMM是个概念，是不存在的东西，是一种约定</p>
+                                <p>屏蔽各种硬件或系统内存的访问差异，实现java程序在各平台达到一致的内存访问效果</p>
+                                <p>关于JMM的一些同步的约定：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>线程解锁前，必须把共享变量 立刻 刷回主存。</li>
+                                    <li>线程加锁前，必须读取主存中的最新值到工作内存中！</li>
+                                    <li>加锁和解锁是同一把锁。</li>
+                                </ol>
+                                <p>线程 工作内存  、 主内存</p>
+                                <p>8种操作：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>lock （锁定）</strong> ：作用于主内存的变量，把一个变量标识为线程独占状态</li>
+                                    <li><strong>unlock （解锁）</strong> ：作用于主内存的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定</li>
+                                    <li><strong>read （读取）</strong> ：作用于主内存变量，它把一个变量的值从主内存传输到线程的工作内存中，以便随后的load动作使用</li>
+                                    <li><strong>load （载入）</strong> ：作用于工作内存的变量，它把read操作从主存中变量放入工作内存中</li>
+                                    <li><strong>use （使用 ）</strong>：作用于工作内存中的变量，它把工作内存中的变量传输给执行引擎，每当虚拟机遇到一个需要使用到变量的值，就会使用到这个指令</li>
+                                    <li><strong>assign （赋值）</strong> ：作用于工作内存中的变量，它把一个从执行引擎中接受到的值放入工作内存的变量副本中</li>
+                                    <li><strong>store （存储 ）</strong>：作用于主内存中的变量，它把一个从工作内存中一个变量的值传送到主内存中，以便后续的write使用</li>
+                                    <li><strong>write （写入）</strong> ：作用于主内存中的变量，它把store操作从工作内存中得到的变量的值放入主内存的变量中</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="c22" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C22</span> 22.volatile
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>保证可见性</p>
+                                <p>不保证原子性</p>
+                                <p>禁止指令重排</p>
+                                <p>1.可见性：如果我们将变量声明为 volatile  ，这就指示 JVM，这个变量是共享且不稳定的，每次使用它都到主存中进行读取。</p>
+                                <p>2.不保证原子性：虽然 volatile  变量保证了对它的操作是立即可见的，但它并不能保证对该变量的操作是原子的。如果一个变量的操作需要保证原子性，通常需要使用 synchronized 关键字(或者lock锁)或者 java.util.concurrent.atomic  包中的原子类</p>
+                                <p>3.禁止指令重排：</p>
+                                <p>什么是指令重排？答：我们写的程序，计算机并不是按照你写的那样去执行的，源代码 —> 编译器优化的重排 —> 指令并行也可能会重排 —> 内存系统也会重排 ——> 执行</p>
+                                <p>volatile  可以避免指令重排：</p>
+                                <p>内存屏障。CPU指令。作用：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>保证特定操作的执行顺序！</li>
+                                    <li>可以保证某些变量的内存可见性 (利用这些特性 volatile  实现了可见性)</li>
+                                </ul>
+                                <p>所以本题答案可回答： volatile 是可以保证可见性。不能保证原子性，由于内存屏障，可以保证避免指令重排的现象产生！</p>
+                                <p>volatile 关键字在底层的实现主要是通过内存屏障（memory barrier）来实现的。内存屏障是一种 CPU 指令，用于强制执行 CPU 的内部缓存与主内存之间的数据同步。</p>
+                                <p>在 Java 中，当线程读取一个 volatile 变量时，会从主内存中读取变量的最新值，并把它存储到线程的工作内存中。当线程写入一个 volatile 变量时，会把变量的值写入到线程的工作内存中，并强制将这个值刷新到主内存中。这样就保证了 volatile 变量的可见性和有序性。</p>
+                            </div>
+                        </div>
+
+                        <div id="c23" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C23</span> 23.CAS和ABA问题
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>CAS（Compare and Swap 比较和交换）是一种用于实现多线程同步的原子操作。它是一种乐观锁的实现方式，在并发编程中广泛应用。</p>
+                                <p>实现 CAS（Compare-And-Swap, 比较并交换）操作的一个关键类是==Unsafe==。</p>
+                                <p><strong>CAS是CPU的并发原语！java无法操作内存，但是java可以调用c++让c++操作内存 unsafe类就是java的后门，可以通过unsafe类操作内存</strong></p>
+                                <p>自带原子性</p>
+                                <p>缺点：1.循环会耗时 2.一次性只能保证一个共享变量的原子性 3.会存在ABA问题</p>
+                                <p>尽管自旋会导致CPU循环等待，但它不会导致线程进入阻塞状态，而是占用CPU资源进行**忙等待**。</p>
+                                <p><span class="highlight">CAS 操作仅能对单个共享变量有效</span>。当需要操作多个共享变量时，CAS 就显得无能为力。不过，从 JDK 1.5 开始，Java 提供了**AtomicReference(原子引用)类**，这使得我们能够保证引用对象之间的原子性。通过将多个变量封装在一个对象中，我们可以使用`AtomicReference`来执行 CAS 操作。</p>
+                                <p>除了 `AtomicReference` 这种方式之外，还可以利用加锁来保证。</p>
+                                <p><strong>ABA问题（狸猫换太子）</strong></p>
+                                <p>ABA 问题是在使用 CAS（Compare and Swap）操作时可能遇到的一种情况，它主要涉及到原子操作的可见性和一致性问题。</p>
+                                <p>具体来说，ABA 问题指的是在一个线程读取一个变量的值 A，然后另一个线程修改该变量的值为 B，再次修改回 A，此时第一个线程再次读取该变量的值时，由于值仍然是 A，所以它会错误地认为该变量的值并未被修改过。这样一来，尽管变量的值发生了变化，但是由于在修改前后的值都是 A，因此 CAS 操作可能会误认为没有其他线程修改过该变量。</p>
+                                <p>ABA 问题可能导致一些意外的行为和数据不一致性。例如，在使用 CAS 进行某种状态判断时，可能会出现误判，从而导致程序的行为不符合预期。这对于需要保证数据的一致性和正确性的场景来说是一个潜在的风险。</p>
+                                <p>为了解决 ABA 问题，可以使用==版本号==或者==时间戳==等机制来确保 CAS 操作的原子性和一致性。通过引入一个额外的变量，记录每次变量的修改次数或者修改时间戳，可以在进行 CAS 操作时检查这个变量，从而避免 ABA 问题。</p>
+                                <p>在 Java 中，引入==**原子引用**==，`AtomicStampedReference` 类提供了一种解决 ABA 问题的方案，它可以在 CAS 操作时同时比较引用和版本号，从而避免了 ABA 问题的发生。</p>
+                            </div>
+                        </div>
+
+                        <div id="c24" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C24</span> 24.如何预防和避免线程死锁？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>如何预防死锁？</strong> 破坏死锁的产生的必要条件即可：</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>破坏请求与保持条件</strong>：一次性申请所有的资源。</li>
+                                    <li><strong>破坏不剥夺条件</strong>：占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源。</li>
+                                    <li><strong>破坏循环等待条件</strong>：靠按序申请资源来预防。按某一顺序申请资源，释放资源则反序释放。破坏循环等待条件。</li>
+                                </ol>
+                                <p><strong>如何避免死锁？</strong></p>
+                                <p>避免死锁就是在资源分配时，借助于算法（比如银行家算法）对资源分配进行计算评估，使其进入安全状态。</p>
+                            </div>
+                        </div>
+
+                        <div id="c25" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C25</span> 25.DCL单例模式
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <pre><code>public class Singleton {
+
+    private volatile static Singleton uniqueInstance;//volatile防止指令重排
+
+    private Singleton() {
+    }
+
+    public  static Singleton getUniqueInstance() {
+       //先判断对象是否已经实例过，没有实例化过才进入加锁代码
+        if (uniqueInstance == null) {
+            //类对象加锁
+            synchronized (Singleton.class) {
+                if (uniqueInstance == null) {
+                    uniqueInstance = new Singleton();
+                }
+            }
+        }
+        return uniqueInstance;
+    }
+}
+</code></pre>
+                                <p><strong>volatile防止指令重排：</strong></p>
+                                <pre><code>因为对于uniqueInstance = new Singleton();//这句代码可以分为3步
+/*
+1.申请内存空间
+2.创建对象
+3.将内存空间指向对象
+正常顺序是123 但是指令重排可能会变为132，这样会导致第一个线程执行了13没执行2，这时第二个线程进来认为uniqueInstance != null直接返回该对象了，但这时该对象还没创建，是一片虚无
+*/
+</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="c26" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">C26</span> 26.乐观锁和悲观锁
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>1.<strong>悲观锁：</strong></p>
+                                <p>悲观锁总是假设最坏的情况，认为共享资源每次被访问的时候就会出现问题(比如共享数据被修改)，所以每次在获取资源操作的时候都会上锁，这样其他线程想拿到这个资源就会阻塞直到锁被上一个持有者释放。也就是说，<strong>共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程</strong>。</p>
+                                <p>像 Java 中`synchronized`和`ReentrantLock`等独占锁就是悲观锁思想的实现。</p>
+                                <p>高并发的场景下，激烈的锁竞争会造成线程阻塞，大量阻塞线程会导致系统的上下文切换，增加系统的性能开销。并且，悲观锁还可能会存在死锁问题，影响代码的正常运行。</p>
+                                <p>2.<strong>乐观锁：</strong></p>
+                                <p>乐观锁总是假设最好的情况，认为共享资源每次被访问的时候不会出现问题，线程可以不停地执行，无需加锁也无需等待，只是在提交修改的时候去验证对应的资源（也就是数据）是否被其它线程修改了（具体方法可以使用版本号机制或 CAS 算法）。</p>
+                                <p>在 Java 中`java.util.concurrent.atomic`包下面的原子变量类（比如`AtomicInteger`、`LongAdder`）就是使用了乐观锁的一种实现方式 **CAS** 实现的。</p>
+                                <p><strong>各自比较：</strong></p>
+                                <p>==悲观锁通常多用于写比较多的情况（多写场景，竞争激烈）==，这样可以避免频繁失败和重试影响性能，悲观锁的开销是固定的。不过，如果乐观锁解决了频繁失败和重试这个问题的话（比如`LongAdder`），也是可以考虑使用乐观锁的，要视实际情况而定。</p>
+                                <p>==乐观锁通常多用于写比较少的情况（多读场景，竞争较少==），这样可以避免频繁加锁影响性能。不过，乐观锁主要==针对的对象是单个共享变量==（参考`java.util.concurrent.atomic`包下面的原子变量类）。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="py-12 text-center text-zinc-500 border-t border-zinc-800">
+                    <p>文档已根据您的《八股问题.md》完成初步渲染。</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 自动生成左侧目录
+        function generateTOC() {
+            try {
+                const nav = document.getElementById('sidebar-nav');
+                if (!nav) {
+                    console.error('侧边栏导航容器未找到');
+                    return;
+                }
+                
+                // 清空现有内容
+                nav.innerHTML = '';
+                
+                const sections = document.querySelectorAll('section');
+                if (sections.length === 0) {
+                    console.error('未找到章节内容');
+                    return;
+                }
+                
+                sections.forEach((section) => {
+                    const title = section.querySelector('h2');
+                    if (!title) return;
+                    
+                    const questions = section.querySelectorAll('.content-card');
+                    if (questions.length === 0) return;
+                    
+                    const group = document.createElement('div');
+                    group.className = 'space-y-3 mb-8';
+                    
+                    const groupTitle = document.createElement('h5');
+                    groupTitle.className = 'text-xs font-semibold text-zinc-500 uppercase tracking-wider px-3';
+                    groupTitle.innerText = title.innerText.replace(/\n/g, '').trim();
+                    group.appendChild(groupTitle);
+                    
+                    const linkList = document.createElement('div');
+                    linkList.className = 'space-y-1';
+                    
+                    questions.forEach(q => {
+                        const qTitle = q.querySelector('h3');
+                        if (!qTitle || !q.id) return;
+                        
+                        const link = document.createElement('a');
+                        link.href = `#${q.id}`;
+                        link.className = 'toc-link block px-3 py-2 text-sm text-zinc-400 hover:text-white rounded-md';
+                        link.innerText = qTitle.innerText.replace(/\n/g, '').trim().split(' ').slice(1).join(' '); // 去掉标签前缀
+                        linkList.appendChild(link);
+                    });
+                    
+                    group.appendChild(linkList);
+                    nav.appendChild(group);
+                });
+                
+                console.log('侧边栏导航生成成功');
+            } catch (error) {
+                console.error('生成侧边栏导航时出错:', error);
+            }
+        }
+
+        // 简单的滚动高亮逻辑
+        window.addEventListener('scroll', () => {
+            try {
+                const scrollPos = window.scrollY + 120;
+                const links = document.querySelectorAll('.toc-link');
+                const cards = document.querySelectorAll('.content-card');
+                
+                let activeCard = null;
+                cards.forEach(card => {
+                    if (scrollPos >= card.offsetTop && scrollPos < card.offsetTop + card.offsetHeight) {
+                        activeCard = card;
+                    }
+                });
+                
+                if (activeCard) {
+                    const link = document.querySelector(`.toc-link[href="#${activeCard.id}"]`);
+                    if (link) {
+                        links.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            } catch (error) {
+                console.error('滚动高亮逻辑出错:', error);
+            }
+        });
+
+        // 页面加载完成后生成导航
+        document.addEventListener('DOMContentLoaded', generateTOC);
+    </script>
+</body>
+</html>
