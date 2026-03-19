@@ -4851,6 +4851,820 @@ public void listenTopicQueue2(String msg){
                     </div>
                 </section>
 
+                <!-- 计算机网络 部分 -->
+                <section>
+                    <h2 id="network" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                        计算机网络
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div id="network1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network1</span> 1.OSI七层模型？TCP/IP 四层模型？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>OSI七层模型:</strong></p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828155843420.png`</p>
+                                <p><strong>TCP/IP 四层模型:</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>应用层</li>
+                                    <li>传输层</li>
+                                    <li>网络层</li>
+                                    <li>网络接口层</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network2" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network2</span> 2.各层常见协议？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>应用层常见协议</strong></span>：</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828160054990.png`</p>
+                                <p><span class="highlight"><strong>传输层常见协议</strong></span>：</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828160117154.png`</p>
+                                <p><span class="highlight"><strong>网络成常见协议</strong></span>：</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828160129113.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network3" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network3</span> 3.从输入url到页面展示其中发生了什么？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>在浏览器中输入指定网页的 URL。</li>
+                                    <li>浏览器通过 DNS 协议，获取域名对应的 IP 地址。</li>
+                                    <li>浏览器根据 IP 地址和端口号，向目标服务器发起一个 TCP 连接请求。</li>
+                                    <li>浏览器在 TCP 连接上，向服务器发送一个 HTTP 请求报文，请求获取网页的内容。</li>
+                                    <li>服务器收到 HTTP 请求报文后，处理请求，并返回 HTTP 响应报文给浏览器。</li>
+                                    <li>浏览器收到 HTTP 响应报文后，解析响应体中的 HTML 代码，渲染网页的结构和样式，同时根据 HTML 中的其他资源的 URL（如图片、CSS、JS 等），再次发起 HTTP 请求，获取这些资源的内容，直到网页完全加载显示。</li>
+                                    <li>浏览器在不需要和服务器通信时，可以主动关闭 TCP 连接，或者等待服务器的关闭请求。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network4" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network4</span> 4.HTTP大致状态码
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828160404342.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network5" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network5</span> 5.http和https有什么区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>HTTPS就是在HTTP和TCP层之间加了SSL/TLS安全传输层</strong></span></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>端口号</strong>：HTTP 默认是 80，HTTPS 默认是 443。</li>
+                                    <li><strong>URL 前缀</strong>：HTTP 的 URL 前缀是 `http://`，HTTPS 的 URL 前缀是 `https://`。</li>
+                                    <li><strong>安全性和资源消耗</strong>：HTTP 协议运行在 TCP 之上，所有传输的内容都是<strong>明文</strong>，客户端和服务器端都无法验证对方的身份。HTTPS 是运行在 SSL/TLS 之上的 HTTP 协议，SSL/TLS 运行在 TCP 之上。所有传输的内容都经过<strong>加密</strong>，<span class="highlight">加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密</span>。所以说，HTTP 安全性没有 HTTPS 高，但是 HTTPS 比 HTTP 耗费更多服务器资源。</li>
+                                    <li><strong>SEO（搜索引擎优化）</strong>：搜索引擎通常会更青睐使用 HTTPS 协议的网站，因为 HTTPS 能够提供更高的安全性和用户隐私保护。使用 HTTPS 协议的网站在搜索结果中可能会被优先显示，从而对 SEO 产生影响。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network6" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network6</span> 6.HTTP是保存状态的协议，如何保存用户状态？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>HTTP 是一种不保存状态，即无状态（stateless）协议。也就是说 HTTP 协议自身不对请求和响应之间的通信状态进行保存。那么我们如何保存用户状态呢？Session 机制的存在就是为了解决这个问题，<span class="highlight"><strong>Session</strong></span> 的主要作用就是通过服务端记录用户的状态。典型的场景是购物车，当你要添加商品到购物车的时候，系统不知道是哪个用户操作的，因为 HTTP 协议是无状态的。服务端给特定的用户创建特定的 Session 之后就可以标识这个用户并且跟踪这个用户了（一般情况下，服务器会在一定时间内保存这个 Session，过了时间限制，就会销毁这个 Session）。</p>
+                                <p>在服务端保存 Session 的方法很多，最常用的就是内存和数据库(比如是使用内存数据库 redis 保存)。既然 Session 存放在服务器端，那么我们如何实现 Session 跟踪呢？大部分情况下，我们都是通过在 Cookie 中附加一个 Session ID 来方式来跟踪。</p>
+                                <p><strong>Cookie 被禁用怎么办?</strong></p>
+                                <p>最常用的就是利用 URL 重写把 Session ID 直接附加在 URL 路径的后面。</p>
+                            </div>
+                        </div>
+
+                        <div id="network7" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network7</span> 7.GET和POST的区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>语义</strong>（主要区别）：<span class="highlight">GET 通常用于获取或查询资源</span>，而 <span class="highlight">POST 通常用于创建或修改资源</span>。</li>
+                                    <li><strong>幂等</strong>：<span class="highlight">GET 请求是幂等的</span>，即多次重复执行不会改变资源的状态，而 <span class="highlight">POST 请求是不幂等的</span>，即每次执行可能会产生不同的结果或影响资源的状态。</li>
+                                    <li><strong>格式</strong>：<span class="highlight">GET 请求的参数通常放在 URL 中</span>，形成查询字符串（querystring），而 <span class="highlight">POST 请求的参数通常放在请求体</span>（body）中，可以有多种编码格式，如 application/x-www-form-urlencoded、multipart/form-data、application/json 等。GET 请求的 URL 长度受到浏览器和服务器的限制，而 POST 请求的 body 大小则没有明确的限制。不过，实际上 GET 请求也可以用 body 传输数据，只是并不推荐这样做，因为这样可能会导致一些兼容性或者语义上的问题。</li>
+                                    <li><strong>缓存</strong>：由于 GET 请求是幂等的，它可以被浏览器或其他中间节点（如代理、网关）缓存起来，以提高性能和效率。而 POST 请求则不适合被缓存，因为它可能有副作用，每次执行可能需要实时的响应。</li>
+                                    <li><strong>安全性</strong>：GET 请求和 POST 请求如果使用 HTTP 协议的话，那都不安全，因为 HTTP 协议本身是明文传输的，必须使用 HTTPS 协议来加密传输数据。另外，<span class="highlight">GET 请求相比 POST 请求更容易泄露敏感数据，因为 GET 请求的参数通常放在 URL 中</span>。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network8" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network8</span> 8.WebSocket
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>什么是WebSocket？</strong></p>
+                                <p>WebSocket 是一种基于 TCP 连接的全双工通信协议，即客户端和服务器可以同时发送和接收数据。</p>
+                                <p>WebSocket 协议本质上是应用层的协议，用于弥补 HTTP 协议在持久通信能力上的不足。客户端和服务器仅需一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
+                                <p><strong>WebSocket 和 HTTP 有什么区别？</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>WebSocket 是一种双向实时通信协议，而 HTTP 是一种单向通信协议。并且，HTTP 协议下的通信只能由客户端发起，服务器无法主动通知客户端。</li>
+                                    <li>WebSocket 使用 ws:// 或 wss://（使用 SSL/TLS 加密后的协议，类似于 HTTP 和 HTTPS 的关系） 作为协议前缀，HTTP 使用 http:// 或 https:// 作为协议前缀。</li>
+                                    <li>WebSocket 可以支持扩展，用户可以扩展协议，实现部分自定义的子协议，如支持压缩、加密等。</li>
+                                    <li>WebSocket 通信数据格式比较轻量，用于协议控制的数据包头部相对较小，网络开销小，而 HTTP 通信每次都要携带完整的头部，网络开销较大（HTTP/2.0 使用二进制帧进行数据传输，还支持头部压缩，减少了网络开销）。</li>
+                                </ol>
+                                <p><strong>WebSocket的工作过程？</strong></p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>客户端向服务器发送一个 HTTP 请求，请求头中包含 `Upgrade: websocket` 和 `Sec-WebSocket-Key` 等字段，表示要求升级协议为 WebSocket；</li>
+                                    <li>服务器收到这个请求后，会进行升级协议的操作，如果支持 WebSocket，它将回复一个 HTTP 101 状态码，响应头中包含 ，`Connection: Upgrade`和 `Sec-WebSocket-Accept: xxx` 等字段、表示成功升级到 WebSocket 协议。</li>
+                                    <li>客户端和服务器之间建立了一个 WebSocket 连接，可以进行双向的数据传输。数据以帧（frames）的形式进行传送，WebSocket 的每条消息可能会被切分成多个数据帧（最小单位）。发送端会将消息切割成多个帧发送给接收端，接收端接收消息帧，并将关联的帧重新组装成完整的消息。</li>
+                                    <li>客户端或服务器可以主动发送一个关闭帧，表示要断开连接。另一方收到后，也会回复一个关闭帧，然后双方关闭 TCP 连接。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network9" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network9</span> 9.DNS执行流程是什么？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>DNS（Domain Name System）域名管理系统。DNS 要解决的是**域名和 IP 地址的映射问题**。</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>浏览器输入域名后先查<span class="highlight">浏览器缓存</span></li>
+                                    <li>没有的话查<span class="highlight">操作系统缓存</span></li>
+                                    <li>没有的话查<span class="highlight">hosts文件</span></li>
+                                    <li>缓存都没有再去问<span class="highlight">本地DNS服务器</span></li>
+                                    <li>本地DNS服务器没有的话会去问<span class="highlight">根DNS服务器</span>，根DNS服务器会指出对应的<span class="highlight">顶级域名服务器</span>让本地服务器去问</li>
+                                    <li>顶级域名服务器会指出<span class="highlight">权威DNS服务器</span>让本地DNS服务器去问</li>
+                                    <li>权威DNS服务器解析出域名对应的ip地址告诉本地DNS</li>
+                                    <li>本地DNS服务器把ip地址告诉客户端</li>
+                                </ol>
+                                <p><strong>大致：浏览器缓存——操作系统缓存——hosts文件——本地DNS——根DNS——顶级DNS——权威DNS——本地DNS——客户端</strong></p>
+                            </div>
+                        </div>
+
+                        <div id="network10" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network10</span> 10.TCP与UDP区别？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240828162012335.png`</p>
+                                <p><strong>什么时候选TCP什么时候选UDP？</strong></p>
+                                <p><strong>UDP 一般用于即时通信</strong>，比如：语音、 视频、直播等等。这些场景对传输数据的准确性要求不是特别高，比如你看视频即使少个一两帧，实际给人的感觉区别也不大。</p>
+                                <p><strong>TCP 用于对传输准确性要求特别高的场景</strong>，比如文件传输、发送和接收邮件、远程登录等等。</p>
+                            </div>
+                        </div>
+
+                        <div id="network11" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network11</span> 11.TCP三次握手四次挥手
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>第三次握手是可以携带数据的，前两次握手是不可以携带数据的</strong></p>
+                                <p><strong>三次握手：</strong></p>
+                                <p><strong>一次握手</strong>:客户端发送带有 <span class="highlight">SYN</span>（SEQ=x） 标志的数据包 -> 服务端，等待服务端的确认；</p>
+                                <p><strong>二次握手</strong>:服务端发送带有 <span class="highlight">SYN+ACK</span>(SEQ=y,ACK=x+1) 标志的数据包 –> 客户端</p>
+                                <p><strong>三次握手</strong>:客户端发送带有 <span class="highlight">ACK</span>(ACK=y+1) 标志的数据包 –> 服务端，然后客户端和服务端都进入TCP连接成功状态，完成 TCP 三次握手。</p>
+                                <p><strong>四次挥手：</strong></p>
+                                <p><strong>第一次挥手</strong>：客户端发送一个 <span class="highlight">FIN</span>（SEQ=x） 标志的数据包->服务端，用来关闭客户端到服务端的数据传送。然后客户端进入 <strong>FIN-WAIT-1</strong> 状态。</p>
+                                <p><strong>第二次挥手</strong>：服务端收到这个 FIN（SEQ=X） 标志的数据包，它发送一个 <span class="highlight">ACK</span> （ACK=x+1）标志的数据包->客户端 。然后服务端进入 <strong>CLOSE-WAIT</strong> 状态，客户端进入 <strong>FIN-WAIT-2</strong> 状态。</p>
+                                <p><strong>第三次挥手</strong>：服务端发送一个 <span class="highlight">FIN</span> (SEQ=y)标志的数据包->客户端，请求关闭连接，然后服务端进入 <strong>LAST-ACK</strong> 状态。</p>
+                                <p><strong>第四次挥手</strong>：客户端发送 <span class="highlight">ACK</span> (ACK=y+1)标志的数据包->服务端，然后客户端进入超时等待时间，服务端在收到 ACK (ACK=y+1)标志的数据包后进入 CLOSE 状态。此时如果客户端等待 <strong>2MSL</strong> 后依然没有收到回复，就证明服务端已正常关闭，随后客户端也可以关闭连接了。</p>
+                            </div>
+                        </div>
+
+                        <div id="network12" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network12</span> 12.三次握手的目的？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>保证双方都有发送和接收的能力</strong></span></p>
+                            </div>
+                        </div>
+
+                        <div id="network13" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network13</span> 13.为什么网络要分层？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>各层之间相互独立</strong>：各层之间相互独立，各层之间不需要关心其他层是如何实现的，只需要知道自己如何调用下层提供好的功能就可以了（可以简单理解为接口调用）<strong>。这个和我们对开发时系统进行分层是一个道理。</strong></li>
+                                    <li><strong>提高了灵活性和可替换性</strong>：每一层都可以使用最适合的技术来实现，你只需要保证你提供的功能以及暴露的接口的规则没有改变就行了。并且，每一层都可以根据需要进行修改或替换，而不会影响到整个网络的结构。<strong>这个和我们平时开发系统的时候要求的高内聚、低耦合的原则也是可以对应上的。</strong></li>
+                                    <li><strong>大问题化小</strong>：分层可以将复杂的网络问题分解为许多比较小的、界线比较清晰简单的小问题来处理和解决。这样使得复杂的计算机网络系统变得易于设计，实现和标准化。 <strong>这个和我们平时开发的时候，一般会将系统功能分解，然后将复杂的问题分解为容易理解的更小的问题是相对应的，这些较小的问题具有更好的边界（目标和接口）定义。</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network14" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network14</span> 14.https执行流程
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>客户端使用 HTTPS 访问服务器端。</li>
+                                    <li>服务器端返回数字证书，以及使用非对称加密（概念见最下方），生成一个公钥给客户端（私钥服务器端自己保留）。</li>
+                                    <li>客户端验证数字证书是否有效，如果无效，终止访问，如果有效： </li>
+                                    <li>
+                                        <ol class="list-decimal ml-5 space-y-1">
+                                            <li>使用对称加密（概念见最下方）生成一个共享秘钥；</li>
+                                            <li>使用对称加密的共享秘钥加密数据；</li>
+                                            <li>使用非对称加密的公钥加密（对称加密生成的）共享秘钥。</li>
+                                            <li>发送加密后的秘钥和数据给服务器端。</li>
+                                        </ol>
+                                    </li>
+                                    <li>服务器端使用私钥解密出客户端（使用对称加密生成的）共享秘钥，再使用共享秘钥解密出数据的具体内容。</li>
+                                    <li>之后客户端和服务器端就使用共享秘钥加密的内容内容进行交互了。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network15" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network15</span> 15.HTTP2.0和3.0有什么区别：
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>2.0是基于TCP协议实现的，3.0新增了QUIC协议，提供与 TLS/SSL 相当的安全性，具有较低的连接和传输延迟。</li>
+                                    <li>2.0需要经过经典的三次握手建立连接，3.0连接建立仅需 0-RTT 或者 1-RTT。这意味着 QUIC 在最佳情况下不需要任何的额外往返时间就可以建立新连接。</li>
+                                    <li>HTTP/2.0 使用 HPACK 算法进行头部压缩，而 HTTP/3.0 使用更高效的 QPACK 头压缩算法。</li>
+                                    <li>HTTP/2.0 多请求复用一个 TCP 连接，一旦发生丢包，就会阻塞住所有的 HTTP 请求。HTTP/3.0 一个连接建立多个不同的数据流，这些数据流之间独立互不影响，某个数据流发生丢包了，其数据流不受影响（本质上是多路复用+轮询）。</li>
+                                </ol>
+                                <p><strong>HTTP/2.0</strong>：使用 TCP 作为传输协议、使用 HPACK 进行头部压缩、依赖 TLS 进行加密。</p>
+                                <p><strong>HTTP/3.0</strong>：使用基于 UDP 的 QUIC 协议、使用更高效的 QPACK 进行头部压缩、在 QUIC 中直接集成了 TLS。QUIC 协议具备连接迁移、拥塞控制与避免、流量控制等特性。</p>
+                            </div>
+                        </div>
+
+                        <div id="network16" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network16</span> 16.TCP流量控制是怎么实现的？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>通过<span class="highlight"><strong>滑动窗口</strong></span>机制实现</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240902223339680.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network17" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network17</span> 17.TCP拥塞控制怎么实现的
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>通过四个</p>
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><strong>慢开始</strong>：指数增长</li>
+                                    <li><strong>拥塞避免</strong>：+1增长</li>
+                                    <li><strong>快重传</strong>：收到三个重复确认</li>
+                                    <li><strong>快恢复</strong>：÷2</li>
+                                </ol>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240902225357753.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network18" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network18</span> 18.TCP如何保证可靠传输？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li><span class="highlight">首部校验和</span>，如果收到的段的校验和有差错，则丢弃该段</li>
+                                    <li><span class="highlight">对失序数据包重排序以及去重</span></li>
+                                    <li><span class="highlight"><strong>重传机制</strong></span></li>
+                                    <li>
+                                        <ol class="list-decimal ml-5 space-y-1">
+                                            <li><strong>超时重传</strong>(基于计时器重传),</li>
+                                            <li><strong>快重传</strong>(连续收到三个重复确认),</li>
+                                            <li><strong>SACK</strong> (可以将已收到的数据的信息发送给「发送方」,只重传丢失的数据,</li>
+                                            <li><strong>D SACK</strong> (使用了 SACK 来告诉「发送方」有哪些数据被重复接收了)</li>
+                                        </ol>
+                                    </li>
+                                    <li><span class="highlight"><strong>流量控制</strong></span>（滑动窗口机制）</li>
+                                    <li><span class="highlight"><strong>拥塞控制</strong></span>（慢开始，拥塞避免，快重传，快恢复）</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="network19" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network19</span> 19.SSL/TLS协议基本流程？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ol class="list-decimal ml-5 space-y-1">
+                                    <li>客户端向服务端索要并验证服务器公钥</li>
+                                    <li>双方协商生产【会话密钥】</li>
+                                    <li>双方采用【会话密钥】进行加密通信</li>
+                                </ol>
+                                <p>1.2步是TLS握手阶段</p>
+                            </div>
+                        </div>
+
+                        <div id="network20" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network20</span> 20.HTTPS采用的加密方式：
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>对称加密和非对称加密结合的”混合加密“</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>在通信建立前采用非对称加密的方式生成[会话密钥]，后续不再使用非对称加密</li>
+                                    <li>在通信过程中全部使用对称加密的[会话密钥]加密明文数据</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network21" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network21</span> 21.ARP协议（地址解析协议）
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>根据ip地址查询相应的MAC地址</strong></span></p>
+                                <p><strong>怎么查？</strong></p>
+                                <p>答：ARP 协议会在以太网中以<strong>广播</strong>的形式，对以太网所有的设备喊出：“这个 IP 地址是谁的？请把你的 MAC 地址告诉我”。</p>
+                                <p>然后就会有人回答：“这个 IP 地址是我的，我的 MAC 地址是 XXXX”。</p>
+                                <p><strong>好像每次都要广播获取，这不是很麻烦吗？</strong></p>
+                                <p>答：后续操作系统会把本次查询结果放到一块叫做 <strong>ARP 缓存</strong>的内存空间留着以后用，不过缓存的时间就几分钟。</p>
+                            </div>
+                        </div>
+
+                        <div id="network22" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network22</span> 22.网卡
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>网络包只是存放在内存中的一串二进制数字信息，没有办法直接发送给对方。因此，我们需要将<strong><span class="highlight">数字信息转换为电信号</span></strong>，才能在网线上传输。</p>
+                                <p>负责执行这一操作的是<strong>网卡</strong>，要控制网卡还需要靠<strong>网卡驱动程序</strong>。</p>
+                                <p>网卡驱动获取网络包之后，会将其<strong>复制</strong>到网卡内的缓存区中，接着会在其<strong>开头加上报头和起始帧分界符，在末尾加上用于检测错误的帧校验序列</strong>。</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903173644330.png`</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>起始帧分界符是一个用来表示包起始位置的标记</li>
+                                    <li>末尾的 `FCS`（帧校验序列）用来检查包传输过程是否有损坏</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network23" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network23</span> 23.交换机
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>交换机里的模块将电信号转换为数字信号。</p>
+                                <p>通过包末尾的 `FCS` 校验错误，如果没问题则放到缓冲区。</p>
+                                <p><span class="highlight"><strong>交换机的端口不具有 MAC 地址</strong></span></p>
+                                <p>交换机的 MAC 地址表主要包含两个信息：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>一个是设备的 MAC 地址，</li>
+                                    <li>另一个是该设备连接在交换机的哪个端口上。</li>
+                                </ul>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903174103549.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network24" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network24</span> 24.路由器
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>路由器的端口具有 MAC 地址</strong></span>，因此它就能够成为以太网的发送方和接收方；同时还具有 IP 地址</p>
+                                <p>总的来说，路由器的端口都具有 MAC 地址，只接收与自身地址匹配的包，遇到不匹配的包则直接丢弃。</p>
+                                <p>接下来，路由器会根据 MAC 头部后方的 `IP` 头部中的内容进行包的转发操作。</p>
+                                <p>在网络包传输的过程中，<strong>源 IP 和目标 IP 始终是不会变的，一直变化的是 MAC 地址</strong>，因为需要 MAC 地址在以太网内进行<strong>两个设备</strong>之间的包传输。</p>
+                            </div>
+                        </div>
+
+                        <div id="network25" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network25</span> 25.HTTP是什么？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><span class="highlight"><strong>HTTP 是一个在计算机世界里专门在「两点」之间「传输」文字、图片、音频、视频等「超文本」数据的「约定和规范」。</strong></span></p>
+                            </div>
+                        </div>
+
+                        <div id="network26" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network26</span> 26.HTTP 缓存技术
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>HTTP 缓存有两种实现方式，分别是<strong>强制缓存和协商缓存</strong>。</p>
+                                <p>强制缓存：</p>
+                                <p>强缓存指的是只要浏览器判断缓存没有过期，则直接使用浏览器的本地缓存，决定是否使用缓存的主动性在于浏览器这边。</p>
+                                <p>协商缓存：</p>
+                                <p>协商缓存就是与服务端协商之后，通过协商结果来判断是否使用本地缓存。</p>
+                            </div>
+                        </div>
+
+                        <div id="network27" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network27</span> 27.HTTPS一定安全可靠吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>问题场景：</strong></p>
+                                <p>客户端通过浏览器向服务端发起 HTTPS 请求时，被「假基站」转发到了一个「中间人服务器」，于是客户端是和「中间人服务器」完成了 TLS 握手，然后这个「中间人服务器」再与真正的服务端完成 TLS 握手。</p>
+                                <p><span class="highlight">但是要发生这种场景是有前提的，前提是用户点击接受了中间人服务器的证书。</span></p>
+                                <p>中间人服务器与客户端在 TLS 握手过程中，实际上发送了自己伪造的证书给浏览器，而这个伪造的证书是能被浏览器（客户端）识别出是非法的，于是就会提醒用户该证书存在问题。</p>
+                                <p>所以，<strong>HTTPS 协议本身到目前为止还是没有任何漏洞的，即使你成功进行中间人攻击，本质上是利用了客户端的漏洞（用户点击继续访问或者被恶意导入伪造的根证书），并不是 HTTPS 不够安全</strong>。</p>
+                            </div>
+                        </div>
+
+                        <div id="network28" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network28</span> 28.HTTP/1.1相比HTTP/1.0有什么提升？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>使用<span class="highlight">长连接</span>的方式改善了 HTTP/1.0 短连接造成的性能开销。</li>
+                                    <li><span class="highlight">支持管道（pipeline）网络传输</span>，只要第一个请求发出去了，不必等其回来，就可以发第二个请求出去，可以减少整体的响应时间。</li>
+                                </ul>
+                                <p>但 HTTP/1.1 还是有性能瓶颈：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>请求 / 响应头部（Header）未经压缩就发送，首部信息越多延迟越大。只能压缩 `Body` 的部分；</li>
+                                    <li>发送冗长的首部。每次互相发送相同的首部造成的浪费较多；</li>
+                                    <li>服务器是按请求的顺序响应的，如果服务器响应慢，会招致客户端一直请求不到数据，也就是队头阻塞；</li>
+                                    <li>没有请求优先级控制；</li>
+                                    <li>请求只能从客户端开始，服务器只能被动响应。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network29" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network29</span> 29.HTTP/2 相比 HTTP/1.1 性能上的改进
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>头部压缩（HPACK算法）</li>
+                                    <li>二进制格式</li>
+                                    <li>并发传输（引出了 Stream 概念，多个 Stream 复用在一条 TCP 连接。）</li>
+                                    <li>服务器主动推送资源</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network30" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network30</span> 30.HTTP/2的队头阻塞问题
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>HTTP/2 是基于 TCP 协议来传输数据的，TCP 是字节流协议，TCP 层必须保证收到的字节数据是完整且连续的，这样内核才会将缓冲区里的数据返回给 HTTP 应用，那么当「前 1 个字节数据」没有到达时，后收到的字节数据只能存放在内核缓冲区里，只有等到这 1 个字节数据到达时，HTTP/2 应用层才能从内核中拿到数据，这就是 HTTP/2 队头阻塞问题。</strong></p>
+                            </div>
+                        </div>
+
+                        <div id="network31" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network31</span> 31.HTTP/3做了哪些优化？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>使用QUIC协议，优点：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>无队头阻塞（有类似 HTTP/2 Stream 与多路复用的概念，<strong>当某个流发生丢包时，只会阻塞这个流，其他流不会受到影响，因此不存在队头阻塞问题</strong>）</li>
+                                    <li>更快的连接建立（第一次连接1-RTT，在第二次连接的时候，应用数据包可以和 QUIC 握手信息（连接信息 + TLS 信息）一起发送，达到 0-RTT 的效果）</li>
+                                    <li>连接迁移</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network32" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network32</span> 32.TCP四元组
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>TCP <span class="highlight">四元组可以唯一的确定一个连接</span>，四元组包括如下：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>源地址</li>
+                                    <li>源端口</li>
+                                    <li>目的地址</li>
+                                    <li>目的端口</li>
+                                </ul>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903180053511.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network33" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network33</span> 33.HTTP/1.1 如何优化？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>*尽量避免发送 HTTP 请求*；</li>
+                                    <li>*在需要发送 HTTP 请求时，考虑如何减少请求次数*；</li>
+                                    <li>*减少服务器的 HTTP 响应的数据大小*；</li>
+                                </ul>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903181703618.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network34" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network34</span> 34.HPACK头部压缩算法
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>HPACK 算法主要包含三个组成部分：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>静态字典；</li>
+                                    <li>动态字典；</li>
+                                    <li>Huffman 编码（压缩算法）</li>
+                                </ul>
+                                <p>客户端和服务器两端都会建立和维护「<strong>字典</strong>」，用长度较小的索引号表示重复的字符串，再用 <span class="highlight"><strong>Huffman 编码</strong></span>压缩数据，<strong>可达到 50%~90% 的高压缩率</strong>。</p>
+                            </div>
+                        </div>
+
+                        <div id="network35" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network35</span> 35.既然有 HTTP 协议，为什么还要有 RPC？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>其实，`TCP` 是<strong>70年</strong>代出来的协议，而 `HTTP` 是 <strong>90 年代</strong>才开始流行的。而直接使用裸 TCP 会有问题，可想而知，这中间这么多年有多少自定义的协议，而这里面就有<strong>80年代</strong>出来的 `RPC`。</p>
+                                <p>所以我们该问的不是<strong>既然有 HTTP 协议为什么要有 RPC</strong>，而是<strong>为什么有 RPC 还要有 HTTP 协议</strong>。</p>
+                                <p><strong>HTTP 主要用于 B/S 架构，而 RPC 更多用于 C/S 架构。但现在其实已经没分那么清了，B/S 和 C/S 在慢慢融合。</strong></p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>RPC 其实比 HTTP 出现的要早，且比目前主流的 HTTP/1.1 <strong>性能</strong>要更好，所以大部分公司内部都还在使用 RPC。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network36" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network36</span> 36.既然有 HTTP 协议，为什么还要有 WebSocket？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>TCP 协议本身是<strong>全双工</strong>的，但我们最常用的 HTTP/1.1，虽然是基于 TCP 的协议，但它是<strong>半双工</strong>的，对于大部分需要服务器主动推送数据到客户端的场景，都不太友好，因此我们需要使用支持全双工的 WebSocket 协议。</li>
+                                    <li>在 HTTP/1.1 里，只要客户端不问，服务端就不答。基于这样的特点，对于登录页面这样的简单场景，可以使用<strong>定时轮询或者长轮询</strong>的方式实现<strong>服务器推送</strong>(comet)的效果。</li>
+                                    <li>对于客户端和服务端之间需要频繁交互的复杂场景，比如网页游戏，都可以考虑使用 WebSocket 协议。</li>
+                                    <li>WebSocket 和 socket 几乎没有任何关系，只是叫法相似。</li>
+                                    <li>正因为各个浏览器都支持 HTTP协 议，所以 WebSocket 会先利用HTTP协议加上一些特殊的 header 头进行握手升级操作，升级成功后就跟 HTTP 没有任何关系了，之后就用 WebSocket 的数据格式进行收发数据。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network37" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network37</span> 37.TCP头格式有哪些？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>源端口和目的端口</p>
+                                <p>序列号</p>
+                                <p>滑动窗口大小</p>
+                                <p>校验和</p>
+                                <p>首部长度</p>
+                                <p>控制位：SYN ACK FIN RST(出现异常必须强制断开连接)</p>
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903184910629.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network38" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network38</span> 38.TCP最大连接数
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903185200390.png`</p>
+                                <p>当然，服务端最大并发 TCP 连接数远不能达到理论上限，会受以下因素影响：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>文件描述符限制</strong></li>
+                                    <li>每个 TCP 连接都是一个文件，如果文件描述符被占满了，会发生 Too many open files。Linux 对可打开的文件描述符的数量分别作了三个方面的限制：</li>
+                                    <li>
+                                        <ul class="list-disc ml-5 space-y-1">
+                                            <li><strong>系统级</strong>：当前系统可打开的最大数量，通过 `cat /proc/sys/fs/file-max` 查看；</li>
+                                            <li><strong>用户级</strong>：指定用户可打开的最大数量，通过 `cat /etc/security/limits.conf` 查看；</li>
+                                            <li><strong>进程级</strong>：单个进程可打开的最大数量，通过 `cat /proc/sys/fs/nr_open` 查看；</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>内存限制</strong>，每个 TCP 连接都要占用一定内存，操作系统的内存是有限的，如果内存资源被占满后，会发生 OOM。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network39" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network39</span> 39.UDP头部
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>! `https://whispertree.oss-cn-hangzhou.aliyuncs.com/pic/image-20240903185352694.png`</p>
+                            </div>
+                        </div>
+
+                        <div id="network40" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network40</span> 40.什么是 SYN 攻击？如何避免 SYN 攻击？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>攻击者短时间伪造不同 IP 地址的 `SYN` 报文，服务端每接收到一个 `SYN` 报文，就进入`SYN_RCVD` 状态，但服务端发送出去的 `ACK + SYN` 报文，无法得到未知 IP 主机的 `ACK` 应答，久而久之就会<strong>占满服务端的半连接队列</strong>，使得服务端不能为正常用户服务。</p>
+                                <p>避免 SYN 攻击方式，可以有以下四种方法：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>调大 netdev_max_backlog；</li>
+                                    <li>增大 TCP 半连接队列；</li>
+                                    <li>开启 tcp_syncookies；</li>
+                                    <li>减少 SYN+ACK 重传次数</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network41" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network41</span> 41.全连接队列和半连接队列
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>半连接队列，也称 SYN 队列；</li>
+                                    <li>全连接队列，也称 accept 队列；</li>
+                                </ul>
+                                <p>正常流程：</p>
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>当服务端接收到客户端的 SYN 报文时，会创建一个半连接的对象，然后将其加入到内核的「 SYN 队列」；</li>
+                                    <li>接着发送 SYN + ACK 给客户端，等待客户端回应 ACK 报文；</li>
+                                    <li>服务端接收到 ACK 报文后，从「 SYN 队列」取出一个半连接对象，然后创建一个新的连接对象放入到「 Accept 队列」；</li>
+                                    <li>应用通过调用 `accpet()` socket 接口，从「 Accept 队列」取出连接对象。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network42" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network42</span> 42.如果已经建立了连接，但是客户端突然出现故障了怎么办？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>客户端出现故障指的是客户端的主机发生了宕机，或者断电的场景。发生这种情况的时候，如果服务端一直不会发送数据给客户端，那么服务端是永远无法感知到客户端宕机这个事件的，也就是服务端的 TCP 连接将一直处于 `ESTABLISH` 状态，占用着系统资源。</p>
+                                <p>为了避免这种情况，TCP 搞了个<strong>保活机制</strong>。</p>
+                                <p>定义一个时间段，在这个时间段内，如果没有任何连接相关的活动，TCP 保活机制会开始作用，每隔一个时间间隔，发送一个探测报文，该探测报文包含的数据非常少，如果连续几个探测报文都没有得到响应，则认为当前的 TCP 连接已经死亡，系统内核将错误信息通知给上层应用程序。</p>
+                            </div>
+                        </div>
+
+                        <div id="network43" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network43</span> 43.超时重传时间RTO
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>当超时时间 <strong>RTO 较大</strong>时，重发就慢，丢了老半天才重发，没有效率，性能差；</li>
+                                    <li>当超时时间 <strong>RTO 较小</strong>时，会导致可能并没有丢就重发，于是重发的就快，会增加网络拥塞，导致更多的超时，更多的超时导致更多的重发。</li>
+                                </ul>
+                                <p><span class="highlight"><strong>超时重传时间 RTO 的值应该略大于报文往返 RTT 的值</strong>。</span></p>
+                            </div>
+                        </div>
+
+                        <div id="network44" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network44</span> 44.如何解决粘包？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>固定长度的消息；</li>
+                                    <li>特殊字符作为边界；</li>
+                                    <li>自定义消息结构。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network45" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network45</span> 45.SYN报文什么情况下会被丢弃？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>开启 tcp_tw_recycle 参数，并且在 NAT 环境下，造成 SYN 报文被丢弃</li>
+                                    <li>TCP 两个队列满了（半连接队列和全连接队列），造成 SYN 报文被丢弃</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="network46" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network46</span> 46.已建立的TCP连接收到SYN包会发生什么？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p><strong>处于 Established 状态的服务端，如果收到了客户端的 SYN 报文（注意此时的 SYN 报文其实是乱序的，因为 SYN 报文的初始化序列号其实是一个随机数），会回复一个携带了正确序列号和确认号的 ACK 报文，这个 ACK 被称之为 Challenge ACK。</strong></p>
+                                <p><strong>接着，客户端收到这个 Challenge ACK，发现确认号（ack num）并不是自己期望收到的，于是就会回 RST 报文，服务端收到后，就会释放掉该连接。</strong></p>
+                            </div>
+                        </div>
+
+                        <div id="network47" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network47</span> 47.TCP和UDP可以绑定相同端口吗？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>TCP 和 UDP 是两种不同的传输层协议，理论上它们是可以同时绑定到相同的端口的。因为 TCP 和 UDP 使用的端口号在操作系统中是相互独立的，两者的套接字由 `(IP 地址, 端口号, 协议)` 组成。因此，TCP 和 UDP 可以在同一个 IP 地址和端口号上并存，但它们的协议类型不同，这使得操作系统能够区分它们。</p>
+                            </div>
+                        </div>
+
+                        <div id="network48" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network48</span> 48.ping的工作原理
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>依靠ICMP协议，ICMP：用于告知网络包传送过程中产生的错误和各种控制信息</p>
+                            </div>
+                        </div>
+
+                        <div id="network49" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">network49</span> 49.localhost和127.0.0.1
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>`127.0.0.1` 是<strong>回环地址</strong>。`localhost`是<strong>域名</strong>（存在hosts文件中），但默认等于 `127.0.0.1`。</li>
+                                    <li>`ping` 回环地址和 `ping` 本机地址，是一样的，走的是<strong>lo0 "假网卡"</strong>，都会经过网络层和数据链路层等逻辑，最后在快要出网卡前<strong>狠狠拐了个弯</strong>， 将数据插入到一个<strong>链表</strong>后就<strong>软中断</strong>通知 <strong>ksoftirqd</strong> 来进行<strong>收数据</strong>的逻辑，<strong>压根就不出网络</strong>。所以断网了也能 `ping` 通回环地址。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nacos 部分 -->
+                <section class="mb-12">
+                    <h2 id="nacos" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                        Nacos
+                    </h2>
+                    <div class="space-y-6">
+                        <div id="nacos1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">nacos1</span> 1. nacos为什么对于临时实例采用心跳检测,非临时实例采用主动询问?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <p>临时实例  采用 心跳检测  是因为这些实例动态性强，不会持久化存储，如果Nacos在指定时间内（如30秒）没有收到某个临时实例的心跳，它会将该实例从服务列表中移除，这有助于保持服务列表的准确性和最新性。</p>
+                                <p>非临时实例 相对稳定，有持久化存储，在服务重启后，可以快速恢复到之前的服务状态，不需要重新进行服务发现。Nacos会定期向注册的服务发送请求，以验证其健康状况。</p>
+                            </div>
+                        </div>
+
+                        <div id="nacos2" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">nacos2</span> 2.将 Nacos 同时作为配置中心和注册中心可能会带来以下几个潜在的问题或挑战
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>性能影响</strong>：注册中心和服务发现通常涉及到频繁的心跳检测、服务信息的更新和查询操作，而配置服务则可能需要处理大量的配置信息更新和拉取请求。如果两个功能混合在一起，可能会因为资源竞争而导致性能瓶颈。</li>
+                                    <li><strong>维护困难</strong>：虽然 Nacos 支持配置服务和注册中心的功能，但它们的运维和管理可能有不同的要求。比如，配置中心可能需要更强的一致性保障，而注册中心对可用性的要求更高。混用两者可能增加维护的复杂性。</li>
+                                    <li><strong>扩展性限制</strong>：在不同的应用场景中，配置中心和注册中心可能有不同的扩展需求。例如，当服务数量增加时，可能需要对注册中心进行扩展，而配置更新的频率较低，不需要同样的扩展策略。若两个组件耦合在一起，可能会限制单独针对某一功能的扩展能力。</li>
+                                    <li><strong>故障隔离难度</strong>：当配置中心出现问题时，可能会影响到注册中心的正常运作，反之亦然。这种设计缺乏良好的故障隔离机制，一旦一个组件发生故障，可能会影响到整个系统的稳定运行。</li>
+                                    <li><strong>安全风险</strong>：如果配置信息和注册信息都存储在同一平台，可能会引入额外的安全风险。配置信息很可能包含敏感数据，而服务发现通常需要更开放的访问权限，这可能导致安全策略难以平衡。</li>
+                                    <li><strong>更新策略冲突</strong>：配置中心的更新可能采用拉模式（即客户端定时去拉取最新配置），而注册中心的更新通常是推模式（服务注册信息变更会推送给所有订阅的客户端）。这两种不同的更新逻辑同时存在于一个系统中可能会导致冲突。</li>
+                                    <li><strong>资源规划难度</strong>：在资源分配上，需要根据业务需求合理规划 CPU、内存以及网络资源。如果 Nacos 同时承担两种角色，可能会使得资源规划变得更加复杂。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="nacos3" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">nacos3</span> 3.为什么Nacos可以抗住那么高的注册?
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li><strong>异步任务处理</strong>：Nacos在处理注册请求时采用了异步机制，这意味着当接收到注册信息时，不会立即阻塞当前的处理线程，而是将这些任务放入队列中，由后台的异步线程进行处理。这种方式可以显著减少线程等待时间，提高系统的吞吐能力。</li>
+                                    <li><strong>内存队列设计</strong>：Nacos使用了内存队列来缓存待处理的注册信息。这个队列可以有效地平衡瞬时的高并发压力，防止系统因为突发的流量而崩溃。通过内存队列的缓冲，Nacos可以在保持较低延迟的同时，处理更多的注册请求。</li>
+                                    <li><strong>数据结构优化</strong>：Nacos内部使用了ConcurrentSkipListMap这样的高性能并发数据结构来存储服务实例。ConcurrentSkipListMap是一种跳表的并发实现，它提供了高效的并发读写能力，这对于注册中心来说是至关重要的，因为它需要频繁地更新和查询服务实例信息。</li>
+                                    <li><strong>资源管理策略</strong>：Nacos还可能有一些资源管理和性能优化的策略，比如负载均衡、资源预留等，这些策略可以帮助Nacos更好地利用系统资源，提高服务的可用性和稳定性。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dubbo 部分 -->
+                <section class="mb-12">
+                    <h2 id="dubbo" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                        Dubbo
+                    </h2>
+                    <div class="space-y-6">
+                        <div id="dubbo1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">dubbo1</span> 1.dubbo注册时会注册什么数据上去？
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>服务接口名 、版本、分组等基础信息。</li>
+                                    <li>服务提供者的 URL 、方法元数据、协议、权重等。</li>
+                                    <li>服务消费者的订阅信息 、消费接口及相关策略。</li>
+                                    <li>路由规则和配置 ，包括负载均衡、超时、重试等信息。</li>
+                                    <li>元数据中心信息 ，包含接口定义、方法签名等细节。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 计算机组成原理 部分 -->
+                <section class="mb-12">
+                    <h2 id="computer" class="text-3xl font-bold mb-8 flex items-center gap-3 anchor-offset">
+                        <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                        计算机组成原理
+                    </h2>
+                    <div class="space-y-6">
+                        <div id="computer1" class="content-card rounded-xl p-6 anchor-offset">
+                            <h3 class="text-lg font-semibold mb-3 flex items-start">
+                                <span class="tag">computer1</span> 1.冯诺依曼结构五大部分
+                            </h3>
+                            <div class="text-zinc-400 leading-relaxed text-sm space-y-4">
+                                <ul class="list-disc ml-5 space-y-1">
+                                    <li>运算器</li>
+                                    <li>控制器</li>
+                                    <li>存储器</li>
+                                    <li>输入设备</li>
+                                    <li>输出设备</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="py-12 text-center text-zinc-500 border-t border-zinc-800">
                     <p>到底了~</p>
                 </div>
